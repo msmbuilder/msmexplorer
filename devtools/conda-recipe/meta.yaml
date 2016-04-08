@@ -1,0 +1,47 @@
+package:
+  name: msmexplorer
+  version: "0.1.0.dev0"
+
+source:
+  path: ../../
+
+build:
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - numpy
+    - pandas
+    - msmbuilder
+    - mdtraj
+    - nglview
+    - matplotlib
+    - mpld3
+
+test:
+
+  requires:
+    - nose
+    - nose-timer
+    - numpy
+    - pandas
+    - msmbuilder
+    - mdtraj
+    - nglview
+    - matplotlib
+    - mpld3
+
+  imports:
+    - msmexplorer
+
+  commands:
+    - nosetests -v msmexplorer --with-timer
+
+about:
+  home: https://github.com/msmbuilder/osprey
+  license: Apache Software License
+  summary: 'Run distributed cross-validation'

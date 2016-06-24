@@ -1,6 +1,6 @@
 import numpy as np
 import networkx as nx
-import seaborn as sns
+import seaborn.apionly as sns
 from matplotlib import pyplot as pp
 
 

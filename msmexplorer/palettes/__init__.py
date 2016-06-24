@@ -1,4 +1,4 @@
-from seaborn import xkcd_rgb
+from seaborn.apionly import xkcd_rgb
 from .custom import msme_rgb
 
 all_rgb = {}

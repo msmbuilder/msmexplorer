@@ -58,8 +58,7 @@ def main(**kwargs):
         url='https://github.com/cxhernandez/%s' % NAME,
         download_url='https://github.com/cxhernandez/%s/tarball/master' % NAME,
         license='LGPLv2+',
-        packages=[NAME] + [NAME + '.%s' % e for e in find_packages(NAME)],
-        package_dir={'': NAME},
+        packages=find_packages(),
         include_package_data=True,
         package_data={
             NAME: ['README.md',

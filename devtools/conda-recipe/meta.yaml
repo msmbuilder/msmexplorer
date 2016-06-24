@@ -20,6 +20,7 @@ requirements:
     - mdtraj
     - nglview
     - matplotlib
+    - seaborn
     - networkx
 
 test:
@@ -27,21 +28,17 @@ test:
   requires:
     - nose
     - nose-timer
-    - numpy
-    - pandas
-    - msmbuilder
-    - mdtraj
-    - nglview
-    - matplotlib
-    - networkx
+    - python-coveralls
 
   imports:
     - msmexplorer
 
   commands:
-    - nosetests -v msmexplorer --with-timer
+    - nosetests -v msmexplorer --with-timer --with-coverage  --cover-package=msmexplorer
 
 about:
   home: https://github.com/msmexplorer/msmexplorer
   license: MIT
   summary: 'Visualizations for statistical models of biomolecular dynamics'
+
+# vim: ts=2 sw=2 et

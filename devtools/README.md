@@ -68,7 +68,7 @@ Docs Building & Hosting
 =======================
 
 After a travis build succeeds, the docs are built with sphinx and pushed to
-the msmbuilder.org amazon s3 account in the osprey/ subdirectory.
+the msmbuilder.org amazon s3 account in the msmexplorer/ subdirectory.
 The credentials for that account are stored,
 encrypted, in the .travis.yml file.
 

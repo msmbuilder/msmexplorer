@@ -3,7 +3,7 @@ try:
     from urllib.request import urlopen
 except ImportError:
     from urllib2 import urlopen
-from osprey import version
+from msmexplorer import version
 
 if not version.release:
     print("This is not a release.")

@@ -1,6 +1,6 @@
 import os
 import shutil
-from osprey import version
+from msmexplorer import version
 
 if version.release:
     docversion = version.short_version

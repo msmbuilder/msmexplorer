@@ -42,6 +42,6 @@ test:
     - nosetests -v msmexplorer --with-timer
 
 about:
-  home: https://github.com/msmbuilder/osprey
-  license: Apache Software License
-  summary: 'Run distributed cross-validation'
+  home: https://github.com/msmexplorer/msmexplorer
+  license: MIT
+  summary: 'Visualizations for statistical models of biomolecular dynamics'

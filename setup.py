@@ -31,7 +31,7 @@ def readme_to_rst():
 
 def main(**kwargs):
 
-    write_version_py(VERSION, ISRELEASED, 'osprey/version.py')
+    write_version_py(VERSION, ISRELEASED, 'msmexplorer/version.py')
 
     setup(
         name=NAME,

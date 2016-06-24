@@ -4,8 +4,8 @@ from matplotlib import pyplot as pp
 from ..palettes import msme_rgb
 
 
-def plot_timescale_bar(msm, n_timescales=None, error=None, sigma=2,
-                       colors=None, xlabel=None, ylabel=None, ax=None):
+def plot_timescales(msm, n_timescales=None, error=None, sigma=2, colors=None,
+                    xlabel=None, ylabel=None, ax=None):
 
     if hasattr(msm, 'all_timescales_'):
         timescales = msm.all_timescales_.mean(0)

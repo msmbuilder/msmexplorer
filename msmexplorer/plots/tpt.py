@@ -3,8 +3,8 @@ from matplotlib import pyplot as pp
 from msmbuilder import tpt
 
 
-def plot_tpt(msm, sources, sinks, for_committors=None, num_paths=1, pos=None,
-             node_color='c', edge_color='k', ax=None, **kwargs):
+def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
+                pos=None, node_color='c', edge_color='k', ax=None, **kwargs):
 
     net_flux = tpt.net_fluxes(sources, sinks, msm,
                               for_committors=for_committors)

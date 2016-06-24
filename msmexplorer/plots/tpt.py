@@ -18,5 +18,7 @@ def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
     if not ax:
         ax = pp.gca()
 
-    return nx.draw_networkx(graph, pos=pos, node_color=node_color,
-                            edge_color=edge_color, ax=ax, **kwargs)
+    nx.draw_networkx(graph, pos=pos, node_color=node_color,
+                     edge_color=edge_color, ax=ax, **kwargs)
+
+    return ax

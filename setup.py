@@ -64,7 +64,7 @@ def main(**kwargs):
             NAME: ['README.md',
                    'requirements.txt'],
         },
-        zip_safe=True,
+        zip_safe=False,
         **kwargs
     )
 

@@ -15,7 +15,7 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2, colors=None,
     elif hasattr(msm, 'timescales_'):
         timescales = msm.timescales_
         if not error:
-            error = np.nan2num(msm.uncertainty_timescales())
+            error = np.nan_to_num(msm.uncertainty_timescales())
 
     if n_timescales:
         timescales = timescales[:n_timescales]
@@ -29,7 +29,7 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2, colors=None,
     if not ax:
         ax = pp.gca()
     if not colors:
-        colors = msme_rgb.values()
+        colors = list(msme_rgb.values())
 
     for i, item in enumerate(zip(timescales, error)):
         t, s = item

@@ -20,7 +20,7 @@ requirements:
     - mdtraj
     - nglview
     - matplotlib
-    - mpld3
+    - networkx
 
 test:
 
@@ -33,7 +33,7 @@ test:
     - mdtraj
     - nglview
     - matplotlib
-    - mpld3
+    - networkx
 
   imports:
     - msmexplorer

@@ -15,11 +15,7 @@ MSMExplorer is meant to accompany MSMBuilder.
 .. toctree::
    :maxdepth: 2
 
-   background
-   installation
-   getting_started
-   config_file
-   batch_submission
+   changelog
 
 .. raw:: html
 

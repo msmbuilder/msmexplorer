@@ -1,3 +1,4 @@
+from nose.plugins.skip import SkipTest
 import numpy as np
 from msmbuilder.msm import MarkovStateModel, BayesianMarkovStateModel
 from matplotlib.axes import Subplot
@@ -17,6 +18,7 @@ def test_plot_tpaths_msm():
     assert isinstance(ax, Subplot)
 
 
+@SkipTest
 def test_plot_tpaths_bmsm():
     ax = plot_tpaths(bmsm, 0, 9)
 

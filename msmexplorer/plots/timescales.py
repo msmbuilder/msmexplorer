@@ -3,6 +3,8 @@ from matplotlib import pyplot as pp
 
 from ..palettes import msme_rgb
 
+__all__ = ['plot_timescales']
+
 
 def plot_timescales(msm, n_timescales=None, error=None, sigma=2, colors=None,
                     xlabel=None, ylabel=None, ax=None):

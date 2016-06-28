@@ -3,6 +3,8 @@ import networkx as nx
 import seaborn.apionly as sns
 from matplotlib import pyplot as pp
 
+__all__ = ['plot_pop_resids', 'plot_msm_network']
+
 
 def plot_pop_resids(msm, **kwargs):
     if hasattr(msm, 'all_populations_'):

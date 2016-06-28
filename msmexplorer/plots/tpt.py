@@ -2,6 +2,8 @@ import networkx as nx
 from matplotlib import pyplot as pp
 from msmbuilder import tpt
 
+__all__ = ['plot_tpaths']
+
 
 def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
                 pos=None, node_color='c', edge_color='k', ax=None, **kwargs):

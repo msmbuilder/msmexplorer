@@ -5,3 +5,5 @@
 *.pdb
 *.pyc
 __pycache__
+dist/
+build/

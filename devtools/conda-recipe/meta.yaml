@@ -32,6 +32,7 @@ test:
 
   imports:
     - msmexplorer
+    - msmexplorer.tests
 
   commands:
     - nosetests -v msmexplorer --with-timer --with-coverage  --cover-package=msmexplorer

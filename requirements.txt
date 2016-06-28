@@ -1,0 +1,8 @@
+numpy
+pandas
+matplotlib
+seaborn
+mpld3
+mdtraj
+msmbuilder
+nglview

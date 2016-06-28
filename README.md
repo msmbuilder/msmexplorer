@@ -1,2 +1,3 @@
-# msmexplorer
-Visualizations for statistical models of biomolecular dynamics
+MSMExplorer
+======
+Visualizations for statistical models of biomolecular dynamics.

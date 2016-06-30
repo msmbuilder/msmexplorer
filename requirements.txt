@@ -6,3 +6,4 @@ mpld3
 mdtraj
 msmbuilder
 nglview
+corner

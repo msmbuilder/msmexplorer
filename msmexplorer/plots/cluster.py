@@ -2,10 +2,12 @@ import numpy as np
 from matplotlib import pyplot as pp
 from scipy.spatial import Voronoi
 
+from ..palettes import msme_rgb
+
 __all__ = ['plot_voronoi']
 
 
-def plot_voronoi(kmeans, ax=None, radius=None):
+def plot_voronoi(kmeans, ax=None, radius=None, color_palette=None):
     """
     Reconstruct infinite voronoi regions in a 2D diagram to finite
     regions.
@@ -29,6 +31,9 @@ def plot_voronoi(kmeans, ax=None, radius=None):
 
     if not ax:
         ax = pp.gca()
+
+    if not color_palette:
+        color_palette = msme_rgb
 
     vor = Voronoi(kmeans.cluster_centers_)
 
@@ -89,9 +94,12 @@ def plot_voronoi(kmeans, ax=None, radius=None):
 
     vertices = np.asarray(new_vertices)
 
-    for region in new_regions:
+    colors = list(color_palette.values())
+
+    for i, region in enumerate(new_regions):
+        color = colors[i % len(colors)]
         polygon = vertices[region]
-        ax.fill(*zip(*polygon), alpha=0.4)
+        ax.fill(*zip(*polygon), color=color, alpha=0.4)
 
     ax.scatter(*kmeans.cluster_centers_.T, c='k')
 

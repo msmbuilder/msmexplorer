@@ -2,6 +2,8 @@ import numpy as np
 from matplotlib import pyplot as pp
 from scipy.spatial import Voronoi
 
+__all__ = ['plot_voronoi']
+
 
 def plot_voronoi(kmeans, ax=None, radius=None):
     """

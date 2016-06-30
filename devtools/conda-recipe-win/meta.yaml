@@ -1,0 +1,46 @@
+package:
+  name: msmexplorer
+  version: "0.1.0.dev0"
+
+source:
+  path: ../../
+
+build:
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - numpy
+    - pandas
+    - msmbuilder
+    - mdtraj
+    - nglview
+    - matplotlib
+    - seaborn
+    - networkx
+    - corner
+
+test:
+
+  requires:
+    - nose
+    - nose-timer
+
+  imports:
+    - msmexplorer
+    - msmexplorer.tests
+    - matplotlib
+
+  commands:
+    - nosetests -v msmexplorer --with-timer
+
+about:
+  home: https://github.com/msmexplorer/msmexplorer
+  license: MIT
+  summary: 'Visualizations for statistical models of biomolecular dynamics'
+
+# vim: ts=2 sw=2 et

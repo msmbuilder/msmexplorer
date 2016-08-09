@@ -6,7 +6,8 @@ Visualizations for statistical models of biomolecular dynamics.
 Overview
 --------
 
-MSMExplorer is meant to accompany MSMBuilder.
+MSMExplorer is meant to accompany MSMBuilder by providing state-of-the-art
+plotting tools for biomolecular modeling.
 
 .. raw:: html
 

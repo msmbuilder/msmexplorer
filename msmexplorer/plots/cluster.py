@@ -17,10 +17,12 @@ def plot_voronoi(kmeans, ax=None, radius=None, color_palette=None):
     ----------
     kmeans : msmbuilder.cluster
         MSMBuilder cluster object
-    ax : Axis
+    ax : Axis, optional
         matplotlib Axis object
     radius : float, optional
         Distance to 'points at infinity'.
+    color_palette: list or dict, optional
+        Color palette to apply
 
     Returns
     -------

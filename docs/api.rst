@@ -13,13 +13,6 @@ Cluster plots
 
     plot_voronoi
 
-Histogram plots
----------------
-
-.. autosummary::
-    :toctree: generated/
-
-    plot_histogram
 
 MSM plots
 ---------
@@ -30,6 +23,15 @@ MSM plots
     plot_pop_resids
     plot_msm_network
     plot_timescales
+
+Projection plots
+----------------
+
+.. autosummary::
+    :toctree: generated/
+
+    plot_free_energy
+    plot_histogram
 
 TPT plots
 ---------

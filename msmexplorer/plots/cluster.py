@@ -2,6 +2,7 @@ import numpy as np
 from matplotlib import pyplot as pp
 from scipy.spatial import Voronoi
 
+from ..utils import extract_palette
 from ..palettes import msme_rgb
 
 __all__ = ['plot_voronoi']
@@ -94,7 +95,7 @@ def plot_voronoi(kmeans, ax=None, radius=None, color_palette=None):
 
     vertices = np.asarray(new_vertices)
 
-    colors = list(color_palette.values())
+    colors = extract_palette(color_palette)
 
     for i, region in enumerate(new_regions):
         color = colors[i % len(colors)]

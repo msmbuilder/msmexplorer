@@ -1,3 +1,5 @@
 # Include python so this file isn't empty
 python
 numpydoc
+msmbuilder
+msmb_data

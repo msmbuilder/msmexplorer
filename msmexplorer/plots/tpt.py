@@ -1,5 +1,7 @@
+import numpy as np
 import networkx as nx
 from matplotlib import pyplot as pp
+
 from msmbuilder import tpt
 
 __all__ = ['plot_tpaths']
@@ -19,6 +21,9 @@ def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
 
     if not ax:
         ax = pp.gca()
+
+    if not pos:
+        pos=nx.spring_layout(graph)
 
     nx.draw_networkx(graph, pos=pos, node_color=node_color,
                      edge_color=edge_color, ax=ax, **kwargs)

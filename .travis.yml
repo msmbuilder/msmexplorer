@@ -1,44 +1,38 @@
 language: c
 sudo: false
-
 env:
-    matrix:
-        - CONDA_PY=3.4
-        - CONDA_PY=3.5
-
+  matrix:
+  - CONDA_PY=3.4
+  - CONDA_PY=3.5
 branches:
   only:
-    - master
-
+  - master
 install:
-    - source devtools/travis-ci/install_miniconda.sh
-    - conda config --add channels omnia
-    - conda config --add channels astropy
-    - conda install -yq python-coveralls
-
+- source devtools/travis-ci/install_miniconda.sh
+- conda config --add channels omnia
+- conda config --add channels astropy
+- conda install -yq python-coveralls
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
 script:
-    - conda build --quiet devtools/conda-recipe
-    - devtools/travis-ci/build_docs.sh
-
+- conda build --quiet devtools/conda-recipe
+- devtools/travis-ci/build_docs.sh
 after_success:
-  - cp $HOME/miniconda3/conda-bld/test-tmp_dir/.coverage .
-  - coveralls
-
+- cp $HOME/miniconda3/conda-bld/test-tmp_dir/.coverage .
+- coveralls
 deploy:
+  matrix:
   - provider: s3
-    access_key_id:
-      secure: "SqhEJJ2SKUk1PfmOIXvMAvycinQAhrj7hHBPvJLQBmZTeHmDxmBA5CRsZ94wCHDRuhspVRZ3AV2f0DlxqnJFS9R2zHdHtl1tz8uLG5mTLNh9uH2CyXu+iVeGnJg5S1tzzjOFeOvNZUS50UB6mQwfsjkszaHXjWBAvKYdE5PUSaw="
-    secret_access_key:
-      secure: "GwJh4dZrIFgTU8COqzwpBeemA0vjV/USrtgv4OKcUcOCoVb2hcIm4+NKZt5UH8Xhikd96u2KHb4bLict4mImVEQpbw8iL8+hJczsGFuNFM54pSFnAt0Qcg+pDb2P+2qFs4kPyOGyORKUSyXjfWpTqMsC44vwKR+PLwGZk76GT0s="
-    bucket: "msmbuilder.org"
+    bucket: msmbuilder.org
     upload-dir: msmexplorer
     skip_cleanup: true
     local_dir: docs/_deploy/
     on:
-        branch: master
-        condition: "$CONDA_PY = 3.5"
+      branch: master
+      condition: "$CONDA_PY = 3.5"
+    access_key_id:
+      secure: OcdMvN8aeJUm2G4sRvU/RMfUD7MsMIawXUt4dW9NPZq/OBWW+Hu7+nNOGUvYCST+1r4PA4wadWetN7wOUhhrwjFhzoBY5z6gR4dwIcs/Reb9uP2aRgkVJqR88OFyodiYPhYXtrplryHyZr/uux9lPlJV12ET2dOwHvTfVad3ptc21R+FWL6DcFtBdRZyrSZnACRPD/gCFuMT/+brsqAtiCwzZuvLDSbaKyBh4NTdjxq48amD2K+LQqhWue0Ko6HePlsqI9dQlaQIV4HAKLKXQrdPFzeDA4wcLsLYdyLISTQXOqCAzdGdFEtxUhk6ZmDKXwAyTgr0LRXFKUN/UcenYLIUZNhvOXg8MnKS2/c0LUCsmR9OIKHG0jeQetGDUquZxLdYPqkcmeqnaHECJKbNcEy7+MSZIZ034cwgcPGMnDvT2Rw1vVEKa4Uth2aP0Zs3CNL9PhrW3oRyYj+APMaYOjeG85Q5trFaUgTI4g02LfSkUZvYis514pyMHNRxtczSWGM1Li/GZGdq/JZLq48IIv9cKJ5Mva7+CPh5xz57+uq0bRoN0SqwUnqrj9EOAxgopDern+WWDzCSILByly+ZcMaoI86QuQdOi9hLerwUsHJHVye/56cwDMAIarzm83LRHnPbcbLpnBjdJBtEngbDPZdfOV7nK+Mgs5vYpBh7z4c=
+    secret_access_key:
+      secure: S0ykNJO9621HyM+vcGrHxMwrOoa2uR9cvauffNDN7pRmMI/uCOz1A6KHf3A1fFXWXIlqpuGvNjviPYsUQ2iCqdvDZVP5/d/SwBBf5QIoXVV//UNOXAuRMTBczPs6czuF3LED4x17+VFmI4nex2RY3WktWQQrgyxEC9zjm9g7XkylwGLzF6gHswrel9p7R5Nj98Dh7PtvyiQBERzd0HI7sBR84uhbV2qlbI7cIKczY5sNJ+XlIdqQW5JWq+NzX2I8GehLg3px+n8ghzjgmT6MYCVLAFBdxwAduHWrm1PpP0jDATGKk3mr7b+GS5AKUbFCUmeQUNcnCNMjpXk3q1V/u2/VSRqchszBp0oQJxo8eE/NZ4SNH6mZJaKAtX3HhmMzbs9P/yFtEHa2Jx8hFhy1fwf/3wlLlR/sXllHBOzwo1EsRvFApJ4THPayHD3ySBhWxRoSCUlVCE7X2IBFxYqI2CkiONg2J7RqxEX5vgu4Wl8mreNdFKhWitGgGNCjhx+iOcSLkhEDXe56LZ5SCDEvM4jRiSnWlLGH+ILZbtrBWvMX7itS9n7YL2+nrdVDkBGRK/DC2Jt1p+Kh4hWqcf+/ClnU7P4r9X6H9kOVaWgQCkGRgnbsDcRAkb0v/+UMkoC5L0+bytOSofdefBBuGJwmcWKPuf/H9JioDeJsMfs80Uo=

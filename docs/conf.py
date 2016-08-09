@@ -15,6 +15,9 @@
 
 import sys
 import os
+import sphinx_bootstrap_theme
+import matplotlib as mpl
+mpl.use("Agg")
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -33,6 +36,10 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.mathjax',
+    'plot_generator',
+    'plot_directive',
+    'ipython_console_highlighting',
+    'ipython_directive',
     'numpydoc',
     # 'notebook_sphinxext', # no example notebooks in msmexplorer
 ]
@@ -40,6 +47,7 @@ extensions = [
 autosummary_generate = True
 autodoc_default_flags = ['members', 'inherited-members']
 numpydoc_class_members_toctree = False
+numpydoc_show_class_members = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -113,10 +121,8 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-import msmb_theme
-import sphinx_rtd_theme
 
-html_theme = 'msmb_theme'
+html_theme = 'bootstrap'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -124,15 +130,21 @@ html_theme = 'msmb_theme'
 # html_theme_options = {}
 
 # Context is a dictionary passed to the templating engine.
+html_theme_options = {
+    'source_link_position': "footer",
+    'bootswatch_theme': "flatly",
+    'navbar_sidebarrel': False,
+    'bootstrap_version': "3",
+    'navbar_links': [("API", "api"),
+                     ("Gallery", "examples/index")],
+}
+
 html_context = {
     'versions_json_url': 'http://msmbuilder.org/msmexplorer/versions.json'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [
-    msmb_theme.get_html_theme_path(),
-    sphinx_rtd_theme.get_html_theme_path()
-]
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -143,7 +155,7 @@ html_theme_path = [
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_static/msmexplorer.png'
+html_logo = '_static/msmexplorer_notext.svg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32

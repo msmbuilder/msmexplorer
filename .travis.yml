@@ -23,7 +23,6 @@ after_success:
 - cp $HOME/miniconda3/conda-bld/test-tmp_dir/.coverage .
 - coveralls
 deploy:
-  matrix:
   - provider: s3
     bucket: msmbuilder.org
     upload-dir: msmexplorer

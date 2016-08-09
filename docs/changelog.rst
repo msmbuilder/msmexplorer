@@ -8,11 +8,7 @@ v0.1 (Development)
 
 This is the current development version of MSMExplorer
 
-API Changes
-~~~~~~~~~~~
-
 New Features
 ~~~~~~~~~~~~
-
-Improvements
-~~~~~~~~~~~~
++ Featuring plotting tools for clustering, Markov state modeling, and
+transition path theory.

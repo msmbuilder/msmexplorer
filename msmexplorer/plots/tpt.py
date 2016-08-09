@@ -9,7 +9,40 @@ __all__ = ['plot_tpaths']
 
 def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
                 pos=None, node_color='c', edge_color='k', ax=None, **kwargs):
+    """
+    Plot residuals between MSM populations and raw counts
 
+    Parameters
+    ----------
+    msm : msmbuilder.msm
+        MSMBuilder MarkovStateModel
+    sources : int or list, optional
+        TPT source states
+    sinks : int or list, optional
+        TPT sink states
+    sinks : ndarray, optional
+        Pre-computed forward committors
+    pos : dict, optional
+        Node positions in dict format (e.g. {node_id : [x, y]})
+    node_color : str or [r, g, b], optional
+        networkx node colors
+    node_size : int, optional
+        networkx node size
+    node_size : str or [r, g, b], optional
+        networkx edge color
+    ax : Axis, optional
+        matplotlib Axis object
+    with_labels : boolean, optional
+        whether or not to include node labels (default: True)
+    **kwargs : dict, optional
+        Extra arguments to pass to networkx.draw_networkx
+
+    Returns
+    -------
+    ax : Axis
+        matplotlib figure axis
+
+    """
     net_flux = tpt.net_fluxes(sources, sinks, msm,
                               for_committors=for_committors)
     paths, _ = tpt.paths(sources, sinks, net_flux, num_paths=num_paths)
@@ -23,7 +56,7 @@ def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
         ax = pp.gca()
 
     if not pos:
-        pos=nx.spring_layout(graph)
+        pos = nx.spring_layout(graph)
 
     nx.draw_networkx(graph, pos=pos, node_color=node_color,
                      edge_color=edge_color, ax=ax, **kwargs)

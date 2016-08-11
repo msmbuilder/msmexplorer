@@ -4,6 +4,7 @@ Voronoi Plot
 """
 import numpy as np
 from sklearn.cluster import KMeans
+
 import msmexplorer as msme
 
 # Create a random dataset across several variables

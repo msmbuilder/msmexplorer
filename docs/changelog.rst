@@ -10,5 +10,5 @@ This is the current development version of MSMExplorer
 
 New Features
 ~~~~~~~~~~~~
-+ Featuring plotting tools for clustering, Markov state modeling, and
-transition path theory.
++ Featuring plotting tools for clustering, chord diagrams,
+  Markov state modeling, and transition path theory.

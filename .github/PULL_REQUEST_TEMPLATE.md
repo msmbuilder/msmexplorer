@@ -2,6 +2,9 @@
 
 [Describe changes here]
 
+## Example Figure
+
+[Include example figure, if applicable]
 
 ## PR Check-list
 

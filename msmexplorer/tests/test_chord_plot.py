@@ -3,7 +3,8 @@ from matplotlib.axes import SubplotBase
 
 from ..plots import plot_chord
 
-data = np.random.rand(12, 12)
+rs = np.random.RandomState(42)
+data = rs.rand(12, 12)
 
 
 def test_plot_chord():

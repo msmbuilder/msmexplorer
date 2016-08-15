@@ -3,7 +3,8 @@ from matplotlib.figure import Figure
 
 from ..plots import plot_histogram
 
-data = np.random.rand(10000, 2)
+rs = np.random.RandomState(42)
+data = rs.rand(10000, 2)
 
 
 def test_plot_histogram():

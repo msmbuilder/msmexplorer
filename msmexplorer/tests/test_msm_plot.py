@@ -1,11 +1,12 @@
 import numpy as np
 from msmbuilder.msm import MarkovStateModel, BayesianMarkovStateModel
-from matplotlib.axes import Subplot
+from matplotlib.axes import SubplotBase
 from seaborn.apionly import JointGrid
 
 from ..plots import plot_pop_resids, plot_msm_network, plot_timescales
 
-data = np.random.randint(low=0, high=10, size=100000)
+rs = np.random.RandomState(42)
+data = rs.randint(low=0, high=10, size=100000)
 msm = MarkovStateModel()
 msm.fit(data)
 bmsm = BayesianMarkovStateModel()
@@ -21,16 +22,16 @@ def test_plot_pop_resids():
 def test_plot_msm_network():
     ax = plot_msm_network(msm)
 
-    assert isinstance(ax, Subplot)
+    assert isinstance(ax, SubplotBase)
 
 
 def test_plot_timescales_msm():
     ax = plot_timescales(msm)
 
-    assert isinstance(ax, Subplot)
+    assert isinstance(ax, SubplotBase)
 
 
 def test_plot_timescales_bmsm():
     ax = plot_timescales(bmsm)
 
-    assert isinstance(ax, Subplot)
+    assert isinstance(ax, SubplotBase)

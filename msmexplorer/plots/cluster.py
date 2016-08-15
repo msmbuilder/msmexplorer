@@ -10,8 +10,7 @@ __all__ = ['plot_voronoi']
 
 def plot_voronoi(kmeans, ax=None, radius=None, color_palette=None):
     """
-    Reconstruct infinite voronoi regions in a 2D diagram to finite
-    regions.
+    Reconstruct infinite voronoi regions in a 2D diagram to finite regions.
 
     Parameters
     ----------

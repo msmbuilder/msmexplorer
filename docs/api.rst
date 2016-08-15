@@ -38,3 +38,11 @@ TPT plots
     :toctree: generated/
 
     plot_tpaths
+
+Miscellaneous
+-------------
+
+.. autosummary::
+    :toctree: generated/
+
+    plot_chord

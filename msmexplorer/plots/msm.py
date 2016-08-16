@@ -11,7 +11,7 @@ __all__ = ['plot_pop_resids', 'plot_msm_network', 'plot_timescales']
 
 def plot_pop_resids(msm, **kwargs):
     """
-    Plot residuals between MSM populations and raw counts
+    Plot residuals between MSM populations and raw counts.
 
     Parameters
     ----------
@@ -43,7 +43,7 @@ def plot_pop_resids(msm, **kwargs):
 def plot_msm_network(msm, pos=None, node_color='c', node_size=300,
                      edge_color='k', ax=None, with_labels=True, **kwargs):
     """
-    Plot residuals between MSM populations and raw counts
+    Plot MSM network diagram.
 
     Parameters
     ----------
@@ -89,7 +89,7 @@ def plot_msm_network(msm, pos=None, node_color='c', node_size=300,
 def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
                     color_palette=None, xlabel=None, ylabel=None, ax=None):
     """
-    Plot residuals between MSM populations and raw counts
+    Plot MSM timescales spectral diagram.
 
     Parameters
     ----------

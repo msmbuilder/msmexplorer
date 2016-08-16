@@ -11,7 +11,7 @@ __all__ = ['plot_chord']
 def plot_chord(data, ax=None, cmap=None, labels=None, labelsize=12, norm=True,
                threshold=0.0):
     """
-    Chord diagram
+    Plot chord diagram from an adjacency matrix.
 
     Parameters
     ----------

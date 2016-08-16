@@ -10,7 +10,7 @@ __all__ = ['plot_tpaths']
 def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
                 pos=None, node_color='c', edge_color='k', ax=None, **kwargs):
     """
-    Plot residuals between MSM populations and raw counts
+    Plot TPT network diagram.
 
     Parameters
     ----------

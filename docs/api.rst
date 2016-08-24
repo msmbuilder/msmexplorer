@@ -48,3 +48,4 @@ Miscellaneous
     :toctree: generated/
 
     plot_chord
+    plot_trace

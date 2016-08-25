@@ -18,9 +18,9 @@ requirements:
     - pandas
     - msmbuilder
     - mdtraj
-    - nglview
     - matplotlib
     - seaborn
+    - statsmodels
     - networkx
     - corner
 

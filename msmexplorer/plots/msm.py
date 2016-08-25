@@ -60,7 +60,7 @@ def plot_msm_network(msm, pos=None, node_color='c', node_size=300,
     ax : matplotlib axis, optional (default: None)
         Axis to plot on, otherwise uses current axis.
     with_labels : boolean, optional
-        whether or not to include node labels (default: True)
+        Whether or not to include node labels (default: True)
     **kwargs : dict, optional
         Extra arguments to pass to networkx.draw_networkx
 

@@ -32,7 +32,7 @@ def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
     ax : matplotlib axis, optional (default: None)
         Axis to plot on, otherwise uses current axis.
     with_labels : boolean, optional
-        whether or not to include node labels (default: True)
+        Whether or not to include node labels (default: True)
     **kwargs : dict, optional
         Extra arguments to pass to networkx.draw_networkx
 

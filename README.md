@@ -42,6 +42,25 @@ There are docs for the development version [here](http://msmbuilder.org/msmexplo
 Examples
 --------
 
+```python
+from msmbuilder.example_datasets import FsPeptide
+from msmbuilder.featurizer import RMSDFeaturizer
+
+import msmexplorer as msme
+
+# Load Fs Peptide Data
+traj = FsPeptide().get().trajectories
+
+# Calculate RMSD
+featurizer = RMSDFeaturizer(reference_traj=traj[0][0])
+rmsd = featurizer.transform(traj)
+
+# Plot Trace
+msme.plot_trace(rmsd[0].flatten(), label='traj0', xlabel='Timestep', ylabel='RMSD (nm)')
+```
+
+![](http://msmbuilder.org/msmexplorer/development/_images/plot_trace.png)
+
 The documentation has an [example gallery](http://msmbuilder.org/msmexplorer/development/examples/) with short scripts showing how to use different parts of the package.
 
 

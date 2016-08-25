@@ -9,7 +9,8 @@ __all__ = ['plot_voronoi']
 
 
 def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
-                 radius=None, color_palette=None):
+                 radius=None, color_palette=None, xlabel=None, ylabel=None,
+                 labelsize=14):
     """
     Plot voronoi regions in a 2D diagram.
 
@@ -27,6 +28,12 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
         Distance to 'points at infinity'.
     color_palette: list or dict, optional
         Color palette to apply
+    xlabel : str, optional
+        x-axis label
+    ylabel : str, optional
+        y-axis label
+    labelsize : int, optional (default: 14)
+        x- and y-label font size
 
     Returns
     -------
@@ -113,6 +120,12 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
 
     if cluster_centers:
         ax.scatter(*kmeans.cluster_centers_.T, c='k')
+
+    if xlabel:
+        ax.set_xlabel(xlabel, size=labelsize)
+
+    if ylabel:
+        ax.set_ylabel(ylabel, size=labelsize)
 
     ax.axis('equal')
     ax.set_xlim((vor.min_bound[0] - 0.1, vor.max_bound[0] + 0.1))

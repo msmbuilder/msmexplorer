@@ -21,7 +21,8 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                      pi=None, bw='scott', gridsize=30, cut=3, clip=None,
                      color='beryl', shade=True, alpha=0.5, cmap='bone',
                      vmin=None, vmax=None, n_levels=10, clabel=False,
-                     clabel_kwargs=None, xlabel=None, ylabel=None):
+                     clabel_kwargs=None, xlabel=None, ylabel=None,
+                     labelsize=14):
     """
     Plot free energy of observable(s) in kilocalories per mole.
 
@@ -76,6 +77,8 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         x-axis label
     ylabel : str, optional
         y-axis label
+    labelsize : int, optional (default: 14)
+        x- and y-label font size
 
     Returns
     -------
@@ -148,5 +151,11 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
     else:
         raise ValueError('obs cannot be greater than size 2')
+
+    if xlabel:
+        ax.set_xlabel(xlabel, size=labelsize)
+
+    if ylabel:
+        ax.set_ylabel(ylabel, size=labelsize)
 
     return ax

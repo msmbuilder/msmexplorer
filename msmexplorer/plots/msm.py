@@ -136,7 +136,7 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
     ymax = 10 ** np.ceil(np.log10(np.nanmax(timescales)))
 
     if not ax:
-        ax = pp.gca()
+        _, ax = pp.subplots(1, 1, figsize=(2, 8))
     if not color_palette:
         colors = list(msme_rgb.values())
     else:

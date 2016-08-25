@@ -72,10 +72,12 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
     if ylabel:
         ax.set_ylabel(ylabel, size=labelsize)
 
-    df.hist(label, bins=30, normed=True, color=color, alpha=0.3,
+    df.hist(bins=30, normed=True, color=color, alpha=0.3,
             orientation='horizontal', ax=side_ax)
     sns.kdeplot(df[label], color=color, ax=side_ax, vertical=True)
     side_ax.tick_params(top='off', right='off')
     side_ax.xaxis.set_ticklabels([])
+    side_ax.legend_.remove()
+    side_ax.set_title('')
 
     return ax, side_ax

@@ -22,7 +22,7 @@ def plot_pop_resids(msm, **kwargs):
 
     Returns
     -------
-    ax : Axis
+    ax : matplotlib axis
         matplotlib figure axis
 
     """
@@ -57,8 +57,8 @@ def plot_msm_network(msm, pos=None, node_color='c', node_size=300,
         networkx node size
     node_size : str or [r, g, b], optional
         networkx edge color
-    ax : Axis, optional
-        matplotlib Axis object
+    ax : matplotlib axis, optional (default: None)
+        Axis to plot on, otherwise uses current axis.
     with_labels : boolean, optional
         whether or not to include node labels (default: True)
     **kwargs : dict, optional
@@ -66,7 +66,7 @@ def plot_msm_network(msm, pos=None, node_color='c', node_size=300,
 
     Returns
     -------
-    ax : Axis
+    ax : matplotlib axis
         matplotlib figure axis
 
     """
@@ -107,12 +107,12 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
         x-axis label
     ylabel : str, optional
         y-axis label
-    ax : Axis, optional
-        matplotlib Axis object
+    ax : matplotlib axis, optional (default: None)
+        Axis to plot on, otherwise uses current axis.
 
     Returns
     -------
-    ax : Axis
+    ax : matplotlib axis
         matplotlib figure axis
 
     """

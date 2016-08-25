@@ -18,8 +18,8 @@ def plot_chord(data, ax=None, cmap=None, labels=None, labelsize=12, norm=True,
 
     data : ndarray
         An adjacency matrix
-    ax : Axis, optional (default: None)
-        matplotlib Axis object
+    ax : matplotlib axis, optional (default: None)
+        Axis to plot on, otherwise uses current axis.
     cmap : ColorMap, optional (default: None)
         Optional argument to set the desired colormap
     labels : list, optional (default: None)

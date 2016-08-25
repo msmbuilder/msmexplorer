@@ -9,3 +9,4 @@ dist/
 build/
 _build/
 example_thumbs/
+version.py

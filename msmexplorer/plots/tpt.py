@@ -1,4 +1,3 @@
-import numpy as np
 import networkx as nx
 from matplotlib import pyplot as pp
 
@@ -30,8 +29,8 @@ def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
         networkx node size
     node_size : str or [r, g, b], optional
         networkx edge color
-    ax : Axis, optional
-        matplotlib Axis object
+    ax : matplotlib axis, optional (default: None)
+        Axis to plot on, otherwise uses current axis.
     with_labels : boolean, optional
         whether or not to include node labels (default: True)
     **kwargs : dict, optional

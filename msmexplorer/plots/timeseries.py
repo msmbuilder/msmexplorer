@@ -7,10 +7,46 @@ from ..utils import extract_palette
 __all__ = ['plot_trace']
 
 
-def plot_trace(data, window=1, ax=None, side_ax=None, color='beryl', alpha=0.8,
-               label=None, legend=True, xlabel=None, ylabel=None, labelsize=14,
-               rolling_kwargs=None):
+def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
+               color='beryl', alpha=0.8, legend=True, xlabel=None, ylabel=None,
+               labelsize=14, rolling_kwargs=None):
     """
+    Plot trace of time-series data.
+
+    Parameters
+    ----------
+    data : array-like (nsamples, )
+        The samples. This should be a 1-D time-series array.
+    label : str, optional
+        Label for time-series.
+    window : int, optional (default: 1)
+        Size of the moving window. This is the number of observations used for
+        calculating the average.
+    ax : matplotlib axis, optional
+        main matplotlib figure axis for trace.
+    side_ax : matplotlib axis, optional
+        side matplotlib figure axis for histogram.
+    color : str, optional (default: 'beryl')
+        Style color of the trace.
+    alpha : float, optional  (default: 0.5)
+        Opacity of shaded area.
+    legend : bool, optional (default: True)
+        Whether to display legend in plot.
+    xlabel : str, optional
+        x-axis label
+    ylabel : str, optional
+        y-axis label
+    labelsize : int, optional (default: 14)
+        Font side for axes labels.
+    rolling_kwargs : dict, optional
+        Keyword arguments for ``pandas.DataFrame.rolling``.
+
+    Returns
+    -------
+    ax : matplotlib axis
+        main matplotlib figure axis for trace.
+    side_ax : matplotlib axis
+        side matplotlib figure axis for histogram.
 
     """
 

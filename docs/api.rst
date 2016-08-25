@@ -41,8 +41,8 @@ TPT plots
 
     plot_tpaths
 
-Miscellaneous
--------------
+Miscellaneous plots
+-------------------
 
 .. autosummary::
     :toctree: generated/

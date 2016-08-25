@@ -3,3 +3,8 @@ python
 numpydoc
 msmbuilder
 msmb_data
+traitlets
+ipython-notebook
+jinja2
+nbconvert
+pyparsing

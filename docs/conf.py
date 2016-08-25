@@ -41,7 +41,7 @@ extensions = [
     'ipython_console_highlighting',
     'ipython_directive',
     'numpydoc',
-    # 'notebook_sphinxext', # no example notebooks in msmexplorer
+    'notebook_sphinxext',
 ]
 
 autosummary_generate = True
@@ -136,7 +136,8 @@ html_theme_options = {
     'navbar_sidebarrel': False,
     'bootstrap_version': "3",
     'navbar_links': [("API", "api"),
-                     ("Gallery", "examples/index")],
+                     ("Gallery", "examples/index"),
+                     ("Notebooks", "notebooks/index")],
 }
 
 html_context = {

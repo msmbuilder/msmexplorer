@@ -8,7 +8,8 @@ from ..palettes import msme_rgb
 __all__ = ['plot_voronoi']
 
 
-def plot_voronoi(kmeans, ax=None, radius=None, color_palette=None):
+def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
+                 radius=None, color_palette=None):
     """
     Plot voronoi regions in a 2D diagram.
 
@@ -18,6 +19,10 @@ def plot_voronoi(kmeans, ax=None, radius=None, color_palette=None):
         MSMBuilder cluster object
     ax : matplotlib axis, optional (default: None)
         Axis to plot on, otherwise uses current axis.
+    obs : tuple, optional (default: (0, 1))
+        Observables to plot.
+    cluster_centers : bool, optional (default: True)
+        Whether to plot cluster centers.
     radius : float, optional
         Distance to 'points at infinity'.
     color_palette: list or dict, optional
@@ -37,7 +42,10 @@ def plot_voronoi(kmeans, ax=None, radius=None, color_palette=None):
     if not color_palette:
         color_palette = msme_rgb
 
-    vor = Voronoi(kmeans.cluster_centers_)
+    if len(obs) != 2:
+        assert ValueError('obs must be a tuple')
+
+    vor = Voronoi(kmeans.cluster_centers_[:, obs])
 
     new_regions = []
     new_vertices = vor.vertices.tolist()
@@ -103,7 +111,8 @@ def plot_voronoi(kmeans, ax=None, radius=None, color_palette=None):
         polygon = vertices[region]
         ax.fill(*zip(*polygon), color=color, alpha=0.4)
 
-    ax.scatter(*kmeans.cluster_centers_.T, c='k')
+    if cluster_centers:
+        ax.scatter(*kmeans.cluster_centers_.T, c='k')
 
     ax.axis('equal')
     ax.set_xlim((vor.min_bound[0] - 0.1, vor.max_bound[0] + 0.1))

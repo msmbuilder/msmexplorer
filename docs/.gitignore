@@ -3,4 +3,4 @@ _build/
 generated/
 examples/
 example_thumbs/
-_thumb.png
+*_thumb.png

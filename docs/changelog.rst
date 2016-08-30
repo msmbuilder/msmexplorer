@@ -3,10 +3,10 @@
 Changelog
 =========
 
-v0.1 (Development)
+v0.1.0
 ------------------
 
-This is the current development version of MSMExplorer
+This is the latest stable version of MSMExplorer
 
 New Features
 ~~~~~~~~~~~~

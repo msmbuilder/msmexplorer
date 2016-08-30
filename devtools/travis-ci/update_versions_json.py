@@ -10,7 +10,8 @@ if not version.release:
     exit(0)
 
 URL = 'http://www.msmbuilder.org/msmexplorer'
-versions = json.load(urlopen(URL + '/versions.json'))
+res = urlopen(URL + '/versions.json').read().decode('utf-8')
+versions = json.loads(res)
 
 # new release so all the others are now old
 for i in range(len(versions)):

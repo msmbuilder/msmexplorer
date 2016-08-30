@@ -10,8 +10,8 @@ from setuptools import setup, find_packages
 from basesetup import write_version_py
 
 NAME = "msmexplorer"
-VERSION = "0.1.0"
-ISRELEASED = True
+VERSION = "0.2.0dev"
+ISRELEASED = False
 __version__ = VERSION
 
 

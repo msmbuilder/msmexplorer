@@ -6,6 +6,8 @@ MSMExplorer: data visualizations for biomolecular dynamics
 [![Coverage Status](https://coveralls.io/repos/github/msmexplorer/msmexplorer/badge.svg?branch=master)](https://coveralls.io/github/msmexplorer/msmexplorer?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat)]  (https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/docs-latest-blue.svg?style=flat)] (http://msmbuilder.org/msmexplorer/)
+[![DOI](https://zenodo.org/badge/9890/msmexplorer/msmexplorer.svg)](https://zenodo.org/badge/latestdoi/9890/msmexplorer/msmexplorer)
+
 
 <div class="row">
   <a href="http://msmbuilder.org/msmexplorer/development/examples/plot_chord.html">
@@ -125,3 +127,19 @@ License
 -------
 
 Released under a MIT license
+
+
+Citing
+------
+
+```bibtex
+@misc{msmexplorer,
+  author       = {Carlos X. Hernández  and
+                  Vijay S. Pande},
+  title        = {MSMExplorer},
+  month        = aug,
+  year         = 2016,
+  doi          = {10.5281/zenodo.61277},
+  url          = {http://dx.doi.org/10.5281/zenodo.61277}
+}
+```

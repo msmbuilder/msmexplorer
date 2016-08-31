@@ -10,7 +10,6 @@ branches:
 install:
 - source devtools/travis-ci/install_miniconda.sh
 - conda config --add channels omnia
-- conda config --add channels astropy
 - conda install -yq python-coveralls
 before_script:
 - export DISPLAY=:99.0

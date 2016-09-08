@@ -81,9 +81,10 @@ def plot_chord(data, ax=None, cmap=None, labels=None, labelsize=12, norm=True,
     ax.set_yticklabels([])
     offset = (3 * np.pi / data.shape[0])
 
+    pos = (np.linspace(0, 2*np.pi, data.shape[0] + 1) + offset) % (2*np.pi)
+
     if labels:
-        ax.set_xticks((np.linspace(0, 2*np.pi, data.shape[0] + 1) + offset)
-                      % (2*np.pi))
+        ax.set_xticks(pos)
         ax.set_xticklabels(labels, size=int(labelsize))
     else:
         ax.set_xticklabels([])
@@ -101,13 +102,13 @@ def plot_chord(data, ax=None, cmap=None, labels=None, labelsize=12, norm=True,
     for i in range(data.shape[0]):
         for j in range(data.shape[0]):
             if i != j and data[i, j] > 0.:
+                offset_i = .1 * (j - (data.shape[0] - 1)/2) * offset / data.shape[0]
+                offset_j = .1 * (i - (data.shape[0] - 1)/2) * offset / data.shape[0]
                 verts = [
-                    (2*offset*j/3. - np.pi + 2*offset, 0.9),  # P0
-                    (-np.pi + 2*offset*i/3. + offset, 0.5),  # P1
-                    (2*offset*i/3. + offset +  # P2
-                     (j-data.shape[0]/2)*offset/(2*data.shape[0]), 0.5),
-                    (2*offset*i/3 + offset +  # P3
-                     (j-data.shape[0]/2)*offset/(2*data.shape[0]), .9),
+                    (pos[i] + offset_i, 0.9),  # P0
+                    (pos[i] + offset_i, 0.5),  # P1
+                    (pos[j] + offset_j, 0.5),  # P2
+                    (pos[j] + offset_j, 0.9)  # P3
                     ]
 
                 path = Path(verts, codes)
@@ -116,5 +117,4 @@ def plot_chord(data, ax=None, cmap=None, labels=None, labelsize=12, norm=True,
                                           lw=10 * data[i, j], alpha=0.7,
                                           capstyle='round', zorder=-1)
                 ax.add_patch(patch)
-
     return ax

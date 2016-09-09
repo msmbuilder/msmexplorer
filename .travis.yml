@@ -1,5 +1,8 @@
 language: c
 sudo: false
+os:
+  - osx
+  - linux
 env:
   matrix:
   - CONDA_PY=3.4

@@ -15,7 +15,7 @@ import msmexplorer as msme
 rs = np.random.RandomState(42)
 
 # Load Fs Peptide Data
-trajs = FsPeptide().get().trajectories[:10]
+trajs = FsPeptide().get().trajectories
 
 # Extract Backbone Dihedrals
 featurizer = DihedralFeaturizer(types=['phi', 'psi'])

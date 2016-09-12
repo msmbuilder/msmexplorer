@@ -11,7 +11,7 @@ import numpy as np
 import msmexplorer as msme
 
 # Load Fs Peptide Data
-trajs = FsPeptide().get().trajectories[:10]
+trajs = FsPeptide().get().trajectories
 
 # Extract Backbone Dihedrals
 featurizer = DihedralFeaturizer(types=['phi', 'psi'])
@@ -23,4 +23,5 @@ tica_trajs = tica_model.fit_transform(diheds)
 
 # Plot Histogram
 data = np.concatenate(tica_trajs, axis=0)
-msme.plot_histogram(data)
+msme.plot_histogram(data, color='oxblood', quantiles=(0.5,),
+                    labels=['$x$', '$y$'], show_titles=True)

@@ -42,7 +42,7 @@ def plot_pop_resids(msm, **kwargs):
 
 @msme_colors
 def plot_msm_network(msm, pos=None, node_size=300, node_color='pomegranate',
-                     edge_color='dark slate grey', ax=None, with_labels=True,
+                     edge_color='darkslategrey', ax=None, with_labels=True,
                      **kwargs):
     """
     Plot MSM network diagram.

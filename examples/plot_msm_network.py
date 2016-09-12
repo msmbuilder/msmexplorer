@@ -11,7 +11,6 @@ from msmbuilder.msm import MarkovStateModel
 import numpy as np
 
 import msmexplorer as msme
-from msmexplorer.palettes import msme_rgb
 
 rs = np.random.RandomState(42)
 
@@ -35,5 +34,5 @@ msm = MarkovStateModel(lag_time=2, n_timescales=5)
 msm.fit(clustered_trajs)
 
 # Plot MSM Network
-msme.plot_msm_network(msm, node_color=msme_rgb['pomegranate'],
-                      edge_color=msme_rgb['dark slate grey'])
+msme.plot_msm_network(msm, node_color='pomegranate',
+                      edge_color='darkslategrey')

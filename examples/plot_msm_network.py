@@ -13,7 +13,7 @@ import numpy as np
 import msmexplorer as msme
 from msmexplorer.palettes import msme_rgb
 
-np.random.seed(42)
+rs = np.random.RandomState(42)
 
 # Load Fs Peptide Data
 trajs = FsPeptide().get().trajectories
@@ -27,7 +27,7 @@ tica_model = tICA(lag_time=2, n_components=4)
 tica_trajs = tica_model.fit_transform(diheds)
 
 # Perform Clustering
-clusterer = MiniBatchKMeans(n_clusters=12)
+clusterer = MiniBatchKMeans(n_clusters=12, random_state=rs)
 clustered_trajs = clusterer.fit_transform(tica_trajs)
 
 # Construct MSM

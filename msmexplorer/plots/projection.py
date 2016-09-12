@@ -22,7 +22,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                      color='beryl', shade=True, alpha=0.5, cmap='bone',
                      vmin=None, vmax=None, n_levels=10, clabel=False,
                      clabel_kwargs=None, xlabel=None, ylabel=None,
-                     labelsize=14):
+                     labelsize=14, random_state=None):
     """
     Plot free energy of observable(s) in kilocalories per mole.
 
@@ -79,6 +79,10 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         y-axis label
     labelsize : int, optional (default: 14)
         x- and y-label font size
+    random_state : integer or numpy.RandomState, optional
+        The generator used to initialize the centers. If an integer is
+        given, it fixes the seed. Defaults to the global numpy random
+        number generator
 
     Returns
     -------
@@ -98,9 +102,12 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
     if isinstance(obs, int):
         obs = (obs,)
 
+    if isinstance(random_state, (int, type(None))):
+        random_state = np.random.RandomState(random_state)
+
     prune = data[:, obs]
     if n_samples:
-        idx = np.random.choice(range(data.shape[0]), size=n_samples, p=pi)
+        idx = random_state.choice(range(data.shape[0]), size=n_samples, p=pi)
         prune = prune[idx, :]
 
     if prune.shape[1] == 1:

@@ -14,7 +14,7 @@ d = rs.normal(0, 2, (n, p))
 d += np.log(np.arange(1, p + 1)) * -5 + 10
 
 # Cluster data using KMeans
-kmeans = KMeans()
+kmeans = KMeans(random_state=rs)
 kmeans.fit(d)
 
 # Plot Voronoi Diagram

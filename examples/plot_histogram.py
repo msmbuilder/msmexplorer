@@ -10,10 +10,8 @@ import numpy as np
 
 import msmexplorer as msme
 
-np.random.seed(42)
-
 # Load Fs Peptide Data
-trajs = FsPeptide().get().trajectories
+trajs = FsPeptide().get().trajectories[:10]
 
 # Extract Backbone Dihedrals
 featurizer = DihedralFeaturizer(types=['phi', 'psi'])

@@ -12,7 +12,7 @@ import numpy as np
 
 import msmexplorer as msme
 
-np.random.seed(42)
+rs = np.random.RandomState(42)
 
 # Load Fs Peptide Data
 trajs = FsPeptide().get().trajectories[:10]
@@ -26,7 +26,7 @@ tica_model = tICA(lag_time=2, n_components=2)
 tica_trajs = tica_model.fit_transform(diheds)
 
 # Perform Clustering
-clusterer = MiniBatchKMeans(n_clusters=12)
+clusterer = MiniBatchKMeans(n_clusters=12, random_state=rs)
 clustered_trajs = clusterer.fit_transform(tica_trajs)
 
 # Construct MSM
@@ -36,4 +36,5 @@ assignments = msm.fit_transform(clustered_trajs)
 # Plot Free Energy
 data = np.concatenate(tica_trajs, axis=0)
 pi_0 = msm.populations_[np.concatenate(assignments, axis=0)]
-msme.plot_free_energy(data, obs=(0, 1), n_samples=100000, pi=pi_0)
+msme.plot_free_energy(data, obs=(0, 1), n_samples=100000, pi=pi_0,
+                      random_state=rs)

@@ -3,11 +3,15 @@ from matplotlib import pyplot as pp
 
 from msmbuilder import tpt
 
+from ..utils import msme_colors
+
 __all__ = ['plot_tpaths']
 
 
+@msme_colors
 def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
-                pos=None, node_color='c', edge_color='k', ax=None, **kwargs):
+                pos=None, node_color='pomegranate',
+                edge_color='dark slate grey', ax=None, **kwargs):
     """
     Plot TPT network diagram.
 

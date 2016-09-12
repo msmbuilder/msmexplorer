@@ -2,11 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as pp
 import seaborn.apionly as sns
 
-from ..utils import extract_palette
+from ..utils import msme_colors
 
 __all__ = ['plot_trace']
 
 
+@msme_colors
 def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
                color='beryl', alpha=0.8, legend=True, xlabel=None, ylabel=None,
                labelsize=14, rolling_kwargs=None):
@@ -59,8 +60,6 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
 
     if rolling_kwargs is None:
         rolling_kwargs = {}
-
-    color = extract_palette(color)
 
     df = pd.DataFrame(data, columns=(label,)).rolling(window, **rolling_kwargs).mean()
     df.plot(ax=ax, color=color, alpha=alpha, legend=legend)

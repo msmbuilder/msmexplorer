@@ -2,11 +2,11 @@ import numpy as np
 from scipy.constants import Avogadro, Boltzmann, calorie_th
 from matplotlib import pyplot as pp
 
-from corner import corner as plot_histogram
+from corner import corner
 import seaborn.apionly as sns
 from seaborn.distributions import (_scipy_univariate_kde, _scipy_bivariate_kde)
 
-from msmexplorer.palettes import all_rgb
+from ..utils import msme_colors
 
 __all__ = ['plot_histogram', 'plot_free_energy']
 
@@ -17,6 +17,10 @@ def _thermo_transform(Z, temperature):
     return - THERMO_CONSTANT * temperature * np.log(Z)
 
 
+plot_histogram = msme_colors(corner)
+
+
+@msme_colors
 def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                      pi=None, bw='scott', gridsize=30, cut=3, clip=None,
                      color='beryl', shade=True, alpha=0.5, cmap='bone',
@@ -119,9 +123,9 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
         Z = _thermo_transform(Z, temperature)
 
-        ax.plot(X, Z, color=all_rgb[color])
+        ax.plot(X, Z, color=color)
 
-        ax.fill_between(X, Z, Z.max(), facecolor=all_rgb[color], alpha=alpha)
+        ax.fill_between(X, Z, Z.max(), facecolor=color, alpha=alpha)
 
     elif prune.shape[1] == 2:
 

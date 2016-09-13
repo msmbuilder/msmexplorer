@@ -12,6 +12,6 @@ def test_plot_voronoi():
     kmeans = KMeans(n_clusters=15)
     kmeans.fit([data])
 
-    ax = plot_voronoi(kmeans)
+    ax = plot_voronoi(kmeans, xlabel='x', ylabel='y')
 
     assert isinstance(ax, SubplotBase)

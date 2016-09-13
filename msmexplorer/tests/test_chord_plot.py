@@ -9,6 +9,6 @@ data = rs.rand(12, 12)
 
 def test_plot_chord():
 
-    ax = plot_chord(data, threshold=0.2)
+    ax = plot_chord(data, threshold=0.2, labels=list(range(12)))
 
     assert isinstance(ax, SubplotBase)

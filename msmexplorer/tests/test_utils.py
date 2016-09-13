@@ -8,7 +8,7 @@ def test_extract_palette():
     assert extract_palette(msme_rgb) == list(msme_rgb.values())
     assert extract_palette(list(msme_rgb.keys())) == list(msme_rgb.values())
     assert extract_palette(list(msme_rgb.values())) == list(msme_rgb.values())
-    assert extract_palette('beryl') == list(msme_rgb['beryl'])
+    assert extract_palette('beryl') == msme_rgb['beryl']
     assert extract_palette(msme_rgb['beryl']) == msme_rgb['beryl']
     assert extract_palette(None) is None
 

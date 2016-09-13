@@ -10,6 +10,21 @@ __all__ = ['extract_palette', 'make_colormap', 'msme_colors']
 
 
 def extract_palette(color_palette):
+    """
+    Extract color palette information and return a str/list of hex colors.
+
+    Parameters
+    ----------
+
+    color_palette : str, list, or dict
+        A color string, list of color strings, or color palette dict
+
+    Returns
+    -------
+    colors : list
+        Either a hex color or list of hex colors
+
+    """
     if isinstance(color_palette, dict):
         colors = list(color_palette.values())
         if all(map(ishex, colors)):
@@ -31,6 +46,21 @@ def extract_palette(color_palette):
 
 
 def make_colormap(color_palette, N=256, gamma=1.0):
+    """
+    Create a linear colormap from a color palette.
+
+    Parameters
+    ----------
+
+    color_palette : str, list, or dict
+        A color string, list of color strings, or color palette dict
+
+    Returns
+    -------
+    cmap : LinearSegmentedColormap
+        A colormap object based on color_palette using linear segments.
+
+    """
     colors = extract_palette(color_palette)
     rgb = map(hex2rgb, colors)
     return LinearSegmentedColormap.from_list('custom', list(rgb),
@@ -38,6 +68,21 @@ def make_colormap(color_palette, N=256, gamma=1.0):
 
 
 def msme_colors(func):
+    """
+    A decorator function for enabling MSMExplorer colors.
+
+    Parameters
+    ----------
+
+    func : function
+        A plotting function
+
+    Returns
+    -------
+    wrapper : function
+        Modified plotting function
+
+    """
     # Adapted from http://stackoverflow.com/questions/147816/preserving-signatures-of-decorated-functions
     @functools.wraps(func)
     def wrapper(*args, **kwargs):

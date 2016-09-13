@@ -2,7 +2,6 @@
 MSM Network Plot
 ================
 """
-from msmbuilder.example_datasets import FsPeptide
 from msmbuilder.featurizer import DihedralFeaturizer
 from msmbuilder.decomposition import tICA
 from msmbuilder.cluster import MiniBatchKMeans
@@ -11,6 +10,7 @@ from msmbuilder.msm import MarkovStateModel
 import numpy as np
 
 import msmexplorer as msme
+from msmexplorer.example_datasets import FsPeptide
 
 rs = np.random.RandomState(42)
 
@@ -34,5 +34,4 @@ msm = MarkovStateModel(lag_time=2, n_timescales=5)
 msm.fit(clustered_trajs)
 
 # Plot MSM Network
-msme.plot_msm_network(msm, node_color='pomegranate',
-                      edge_color='darkslategrey')
+msme.plot_msm_network(msm, node_color='pomegranate', edge_color='carbon')

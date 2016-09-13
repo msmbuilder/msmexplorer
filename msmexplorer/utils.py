@@ -41,10 +41,14 @@ def msme_colors(func):
     # Adapted from http://stackoverflow.com/questions/147816/preserving-signatures-of-decorated-functions
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        kwargs = get_kwargs(func)
-        new_kwargs = dict([(k, extract_palette(v)) if 'color' in k else (k, v)
-                           for k, v in kwargs.items()])
-        return func(*args, **new_kwargs)
+        inspect_kwargs = get_kwargs(func)
+        kwargs.update([(k, extract_palette(kwargs.get(k, v)))
+                       for k, v in kwargs.items() if 'color' in k])
+        if inspect_kwargs:
+            kwargs.update([(k, extract_palette(kwargs.get(k, v)))
+                           if 'color' in k else (k, kwargs.get(k, v))
+                           for k, v in inspect_kwargs.items()])
+        return func(*args, **kwargs)
     return wrapper
 
 
@@ -53,7 +57,8 @@ def get_kwargs(func):
     args, _, _, defaults = inspect.getargspec(func)
     if defaults:
         kwargs = args[-len(defaults):]
-    return dict(zip(kwargs, defaults))
+        return dict(zip(kwargs, defaults))
+    return None
 
 
 def ishex(color):

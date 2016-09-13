@@ -9,6 +9,7 @@ from ..palettes import msme_rgb
 __all__ = ['plot_pop_resids', 'plot_msm_network', 'plot_timescales']
 
 
+@msme_colors
 def plot_pop_resids(msm, **kwargs):
     """
     Plot residuals between MSM populations and raw counts.
@@ -42,8 +43,7 @@ def plot_pop_resids(msm, **kwargs):
 
 @msme_colors
 def plot_msm_network(msm, pos=None, node_size=300, node_color='pomegranate',
-                     edge_color='darkslategrey', ax=None, with_labels=True,
-                     **kwargs):
+                     edge_color='carbon', ax=None, with_labels=True, **kwargs):
     """
     Plot MSM network diagram.
 
@@ -141,11 +141,11 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
     if not ax:
         _, ax = pp.subplots(1, 1, figsize=(2, 8))
     if not color_palette:
-        colors = list(msme_rgb.values())
+        color_palette = list(msme_rgb.values())
 
     for i, item in enumerate(zip(timescales, error)):
         t, s = item
-        color = colors[i % len(colors)]
+        color = color_palette[i % len(color_palette)]
         ax.errorbar([0, 1], [t, t], c=color)
         if s:
             for j in range(1, sigma + 1):

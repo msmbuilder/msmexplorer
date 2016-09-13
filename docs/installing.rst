@@ -61,7 +61,7 @@ Mandatory dependencies
 
 
 Importing msmexplorer
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 By convention, ``msmexplorer`` is abbreviated to ``msme`` on import.
 

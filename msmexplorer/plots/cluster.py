@@ -2,12 +2,13 @@ import numpy as np
 from matplotlib import pyplot as pp
 from scipy.spatial import Voronoi
 
-from ..utils import extract_palette
+from ..utils import msme_colors
 from ..palettes import msme_rgb
 
 __all__ = ['plot_voronoi']
 
 
+@msme_colors
 def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
                  radius=None, color_palette=None, xlabel=None, ylabel=None,
                  labelsize=14):
@@ -47,7 +48,7 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
         ax = pp.gca()
 
     if not color_palette:
-        color_palette = msme_rgb
+        color_palette = list(msme_rgb.values())
 
     if len(obs) != 2:
         assert ValueError('obs must be a tuple')
@@ -111,10 +112,8 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
 
     vertices = np.asarray(new_vertices)
 
-    colors = extract_palette(color_palette)
-
     for i, region in enumerate(new_regions):
-        color = colors[i % len(colors)]
+        color = color_palette[i % len(color_palette)]
         polygon = vertices[region]
         ax.fill(*zip(*polygon), color=color, alpha=0.4)
 

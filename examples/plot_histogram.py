@@ -10,8 +10,6 @@ import numpy as np
 
 import msmexplorer as msme
 
-np.random.seed(42)
-
 # Load Fs Peptide Data
 trajs = FsPeptide().get().trajectories
 
@@ -25,4 +23,5 @@ tica_trajs = tica_model.fit_transform(diheds)
 
 # Plot Histogram
 data = np.concatenate(tica_trajs, axis=0)
-msme.plot_histogram(data)
+msme.plot_histogram(data, color='oxblood', quantiles=(0.5,),
+                    labels=['$x$', '$y$'], show_titles=True)

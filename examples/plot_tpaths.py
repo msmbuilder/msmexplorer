@@ -11,9 +11,8 @@ from msmbuilder.msm import MarkovStateModel
 import numpy as np
 
 import msmexplorer as msme
-from msmexplorer.palettes import msme_rgb
 
-np.random.seed(42)
+rs = np.random.RandomState(42)
 
 # Load Fs Peptide Data
 trajs = FsPeptide().get().trajectories
@@ -27,7 +26,7 @@ tica_model = tICA(lag_time=2, n_components=4)
 tica_trajs = tica_model.fit_transform(diheds)
 
 # Perform Clustering
-clusterer = MiniBatchKMeans(n_clusters=100)
+clusterer = MiniBatchKMeans(n_clusters=100, random_state=rs)
 clustered_trajs = clusterer.fit_transform(tica_trajs)
 
 # Construct MSM
@@ -35,6 +34,4 @@ msm = MarkovStateModel(lag_time=2, n_timescales=5)
 msm.fit(clustered_trajs)
 
 # Plot TPT
-msme.plot_tpaths(msm, sources=[99], sinks=[0],
-                 node_color=msme_rgb['beryl'],
-                 edge_color=msme_rgb['dark slate grey'])
+msme.plot_tpaths(msm, [99], [0], node_color='beryl', edge_color='darkslategrey')

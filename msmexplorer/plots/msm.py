@@ -3,7 +3,7 @@ import networkx as nx
 import seaborn.apionly as sns
 from matplotlib import pyplot as pp
 
-from ..utils import extract_palette
+from ..utils import msme_colors
 from ..palettes import msme_rgb
 
 __all__ = ['plot_pop_resids', 'plot_msm_network', 'plot_timescales']
@@ -40,8 +40,10 @@ def plot_pop_resids(msm, **kwargs):
     return ax
 
 
-def plot_msm_network(msm, pos=None, node_color='c', node_size=300,
-                     edge_color='k', ax=None, with_labels=True, **kwargs):
+@msme_colors
+def plot_msm_network(msm, pos=None, node_size=300, node_color='pomegranate',
+                     edge_color='darkslategrey', ax=None, with_labels=True,
+                     **kwargs):
     """
     Plot MSM network diagram.
 
@@ -86,6 +88,7 @@ def plot_msm_network(msm, pos=None, node_color='c', node_size=300,
     return ax
 
 
+@msme_colors
 def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
                     color_palette=None, xlabel=None, ylabel=None, ax=None):
     """
@@ -139,8 +142,6 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
         _, ax = pp.subplots(1, 1, figsize=(2, 8))
     if not color_palette:
         colors = list(msme_rgb.values())
-    else:
-        colors = extract_palette(color_palette)
 
     for i, item in enumerate(zip(timescales, error)):
         t, s = item

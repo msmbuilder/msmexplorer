@@ -7,6 +7,7 @@ from ..plots import plot_tpaths
 
 rs = np.random.RandomState(42)
 data = rs.randint(low=0, high=10, size=100000)
+
 msm = MarkovStateModel()
 msm.fit(data)
 bmsm = BayesianMarkovStateModel()

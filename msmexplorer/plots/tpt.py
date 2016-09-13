@@ -10,8 +10,8 @@ __all__ = ['plot_tpaths']
 
 @msme_colors
 def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
-                pos=None, node_color='pomegranate',
-                edge_color='darkslategrey', ax=None, **kwargs):
+                pos=None, node_color='pomegranate', edge_color='carbon',
+                ax=None, **kwargs):
     """
     Plot TPT network diagram.
 

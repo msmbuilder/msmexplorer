@@ -34,6 +34,6 @@ msm = MarkovStateModel(lag_time=2, n_timescales=5)
 msm.fit(clustered_trajs)
 
 # Plot Timescales
-colors = ['pomegranate', 'beryl', 'tarragon', 'rawdenim', 'darkslategrey']
+colors = ['pomegranate', 'beryl', 'tarragon', 'rawdenim', 'carbon']
 msme.plot_timescales(msm, ylabel='Implied Timescales ($ns$)',
                      color_palette=colors)

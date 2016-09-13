@@ -36,4 +36,5 @@ assignments = msm.fit_transform(clustered_trajs)
 # Plot Free Energy
 data = np.concatenate(tica_trajs, axis=0)
 pi_0 = msm.populations_[np.concatenate(assignments, axis=0)]
-msme.plot_free_energy(data, n_samples=100000, pi=pi_0, random_state=rs)
+msme.plot_free_energy(data, n_samples=100000, pi=pi_0,
+                      gridsize=100, random_state=rs)

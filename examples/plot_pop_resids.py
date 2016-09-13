@@ -34,4 +34,4 @@ msm = MarkovStateModel(lag_time=2, n_timescales=5)
 msm.fit(clustered_trajs)
 
 # Plot MSM Network
-msme.plot_pop_resids(msm)
+msme.plot_pop_resids(msm, color='tarragon')

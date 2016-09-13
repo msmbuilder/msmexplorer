@@ -24,4 +24,5 @@ tica_trajs = tica_model.fit_transform(diheds)
 # Plot Histogram
 data = np.concatenate(tica_trajs, axis=0)
 msme.plot_histogram(data, color='oxblood', quantiles=(0.5,),
-                    labels=['$x$', '$y$'], show_titles=True)
+                    labels=['$tIC1$', '$tIC2$', '$tIC3$', '$tIC4$'],
+                    show_titles=True)

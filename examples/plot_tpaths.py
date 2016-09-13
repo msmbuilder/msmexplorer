@@ -34,4 +34,4 @@ msm = MarkovStateModel(lag_time=2, n_timescales=5)
 msm.fit(clustered_trajs)
 
 # Plot TPT
-msme.plot_tpaths(msm, [99], [0], node_color='beryl', edge_color='darkslategrey')
+msme.plot_tpaths(msm, [99], [0], node_color='beryl', edge_color='carbon')

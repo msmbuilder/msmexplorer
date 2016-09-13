@@ -2,7 +2,7 @@ msme_rgb = {
             'rawdenim': '#547098',
             'beryl': '#68bcbe',
             'dijon': '#c4a15d',
-            'darkslategrey': '#525055',
+            'carbon': '#525055',
             'pomegranate': '#d64d67',
             'oxblood': '#321613',
             'marush': '#706f2c',

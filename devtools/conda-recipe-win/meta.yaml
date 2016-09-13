@@ -1,16 +1,20 @@
 package:
   name: msmexplorer
-  version: "0.1.0.dev0"
+  version: {{ GIT_DESCRIBE_TAG }}
 
 source:
   path: ../../
 
 build:
+  preserve_egg_dir: True
+  number: {{ GIT_DESCRIBE_NUMBER }}
 
 requirements:
   build:
     - python
     - setuptools
+    - cython
+    - numpy
 
   run:
     - python
@@ -21,8 +25,10 @@ requirements:
     - nglview
     - matplotlib
     - seaborn
+    - statsmodels
     - networkx
     - corner
+    - six
 
 test:
 

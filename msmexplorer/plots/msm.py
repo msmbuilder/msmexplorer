@@ -155,7 +155,8 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
 
     ax.xaxis.set_ticks([])
     if xlabel:
-        ax.xaxis.set_label_text(xlabel, size=18, labelpad=18)
+        ax.xaxis.set_label_text(xlabel, size=18)
+        ax.xaxis.labelpad = 18
     if ylabel:
         ax.yaxis.set_label_text(ylabel, size=18)
     ax.set_yscale('log')

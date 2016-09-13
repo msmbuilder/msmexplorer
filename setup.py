@@ -9,7 +9,12 @@ from os.path import join as pjoin
 from setuptools import setup, Extension, find_packages
 
 from distutils.spawn import find_executable
-from basesetup import write_version_py
+try:
+    sys.dont_write_bytecode = True
+    sys.path.insert(0, '.')
+    from basesetup import write_version_py
+finally:
+    sys.dont_write_bytecode = False
 
 try:
     import Cython

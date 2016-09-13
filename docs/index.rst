@@ -64,6 +64,7 @@ To see the code or report a bug, please visit the `github repository
 .. toctree::
    :maxdepth: 2
 
+   colors
    changelog
 
 .. raw:: html

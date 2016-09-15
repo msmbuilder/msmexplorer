@@ -28,8 +28,8 @@ except ImportError:
     sys.exit(1)
 
 NAME = "msmexplorer"
-VERSION = "0.2.0"
-ISRELEASED = True
+VERSION = "0.3.0.dev0"
+ISRELEASED = False
 __version__ = VERSION
 
 

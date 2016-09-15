@@ -3,6 +3,22 @@
 Changelog
 =========
 
+v0.3.0 (Development)
+--------------------
+
+API Changes
+~~~~~~~~~~~
+
+
+New Features
+~~~~~~~~~~~~
+
+
+
+Improvements
+~~~~~~~~~~~~
+
+
 v0.2.0 (September 15, 2016)
 ---------------------------
 

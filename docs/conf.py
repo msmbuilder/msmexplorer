@@ -36,6 +36,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.mathjax',
+    'color_generator',
     'plot_generator',
     'plot_directive',
     'ipython_console_highlighting',

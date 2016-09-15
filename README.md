@@ -7,7 +7,7 @@ MSMExplorer: data visualizations for biomolecular dynamics
 [![PyPI version](https://badge.fury.io/py/msmexplorer.svg)](http://badge.fury.io/py/msmexplorer)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat)]  (https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/docs-latest-blue.svg?style=flat)] (http://msmbuilder.org/msmexplorer/)
-[![DOI](https://zenodo.org/badge/9890/msmexplorer/msmexplorer.svg)](https://zenodo.org/badge/latestdoi/9890/msmexplorer/msmexplorer)
+[![DOI](https://zenodo.org/badge/47228682.svg)](https://zenodo.org/badge/latestdoi/47228682)
 
 
 <div class="row">
@@ -140,7 +140,7 @@ Citing
   title        = {MSMExplorer},
   month        = aug,
   year         = 2016,
-  doi          = {10.5281/zenodo.61277},
-  url          = {http://dx.doi.org/10.5281/zenodo.61277}
+  doi          = {10.5281/zenodo.154092},
+  url          = {http://dx.doi.org/10.5281/zenodo.154092}
 }
 ```

@@ -11,7 +11,7 @@ __all__ = ['plot_voronoi']
 @msme_colors
 def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
                  radius=None, color_palette=None, xlabel=None, ylabel=None,
-                 labelsize=14):
+                 labelsize=14, alpha=0.4):
     """
     Plot voronoi regions in a 2D diagram.
 
@@ -35,6 +35,8 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
         y-axis label
     labelsize : int, optional (default: 14)
         x- and y-label font size
+    alpha : float, optional (default: 0.4)
+        The alpha value of the fill
 
     Returns
     -------
@@ -63,7 +65,7 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
 
     center = vor.points.mean(axis=0)
     if radius is None:
-        radius = vor.points.ptp().max()*2
+        radius = vor.points.ptp().max() * 2
 
     # Construct a map containing all ridges for a given point
     all_ridges = {}
@@ -118,7 +120,7 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
     for i, region in enumerate(new_regions):
         color = color_palette[i % len(color_palette)]
         polygon = vertices[region]
-        ax.fill(*zip(*polygon), color=color, alpha=0.4)
+        ax.fill(*zip(*polygon), color=color, alpha=alpha)
 
     if cluster_centers:
         ax.scatter(*kmeans.cluster_centers_.T, c='k')

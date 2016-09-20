@@ -17,7 +17,7 @@ before_script:
 - sleep 3
 script:
 - conda build --quiet devtools/conda-recipe
-- devtools/travis-ci/build_docs.sh
+  && devtools/travis-ci/build_docs.sh
 after_success:
 - cp $HOME/miniconda3/conda-bld/test-tmp_dir/.coverage .
 - coveralls

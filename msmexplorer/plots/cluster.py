@@ -46,6 +46,9 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
 
     if not ax:
         ax = pp.gca()
+        we_made_ax = True
+    else:
+        we_made_ax = False
 
     if not color_palette:
         color_palette = list(msme_rgb.values())
@@ -126,8 +129,9 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
     if ylabel:
         ax.set_ylabel(ylabel, size=labelsize)
 
-    ax.axis('equal')
-    ax.set_xlim((vor.min_bound[0] - 0.1, vor.max_bound[0] + 0.1))
-    ax.set_ylim((vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1))
+    if we_made_ax:
+        ax.set_xlim((vor.min_bound[0] - 0.1, vor.max_bound[0] + 0.1))
+        ax.set_ylim((vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1))
+        ax.axis('equal')
 
     return ax

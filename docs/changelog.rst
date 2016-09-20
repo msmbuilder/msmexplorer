@@ -9,6 +9,9 @@ v0.3.0 (Development)
 API Changes
 ~~~~~~~~~~~
 
+- ``plot_voronoi`` accepts a new parameter ``alpha`` (#55).
+- ``plot_voronoi`` will not set axis limits if you specify ``ax`` (#55).
+
 
 New Features
 ~~~~~~~~~~~~

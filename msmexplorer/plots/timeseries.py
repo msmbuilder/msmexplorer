@@ -9,7 +9,7 @@ __all__ = ['plot_trace']
 
 @msme_colors
 def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
-               color='beryl', alpha=0.8, legend=True, xlabel=None, ylabel=None,
+               color='beryl', alpha=0.8, legend=None, xlabel=None, ylabel=None,
                labelsize=14, rolling_kwargs=None):
     """
     Plot trace of time-series data.
@@ -34,8 +34,9 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
         Style color of the trace.
     alpha : float, optional  (default: 0.5)
         Opacity of shaded area.
-    legend : bool, optional (default: True)
-        Whether to display legend in plot.
+    legend : bool, optional
+        Whether to display legend in plot. Defaults to
+        True if legend is provided, otherwise defaults to False.
     xlabel : str, optional
         x-axis label
     ylabel : str, optional
@@ -66,6 +67,9 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
 
     if rolling_kwargs is None:
         rolling_kwargs = {}
+
+    if legend is None:
+        legend = (label is not None)
 
     df = (pd.DataFrame(data, columns=(label,))
           .rolling(window, **rolling_kwargs)

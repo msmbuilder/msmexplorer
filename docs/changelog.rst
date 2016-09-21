@@ -9,6 +9,9 @@ v0.3.0 (Development)
 API Changes
 ~~~~~~~~~~~
 
+- ``side_ax`` in ``plot_trace`` is now optional if ``ax`` is provided (#54)
+- ``legend`` in ``plot_trace`` now defaults to True if ``label`` is provided,
+  otherwise false. It previously always defaulted to True (#54).
 - ``plot_voronoi`` accepts a new parameter ``alpha`` (#55).
 - ``plot_voronoi`` will not set axis limits if you specify ``ax`` (#55).
 

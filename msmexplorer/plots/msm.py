@@ -1,6 +1,6 @@
 import numpy as np
 import networkx as nx
-import seaborn.apionly as sns
+import seaborn as sns
 from matplotlib import pyplot as pp
 
 from ..utils import msme_colors

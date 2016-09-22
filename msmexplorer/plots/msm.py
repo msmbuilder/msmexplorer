@@ -42,7 +42,7 @@ def plot_pop_resids(msm, **kwargs):
 
 
 @msme_colors
-def plot_msm_network(msm, pos=None, node_size=300, node_color='pomegranate',
+def plot_msm_network(msm, pos=None, node_size=None, node_color='pomegranate',
                      edge_color='carbon', alpha=.7, ax=None, with_labels=True,
                      **kwargs):
     """
@@ -77,16 +77,21 @@ def plot_msm_network(msm, pos=None, node_size=300, node_color='pomegranate',
     """
     if hasattr(msm, 'all_populations_'):
         tmat = msm.all_transmats_.mean(0)
+        pop = msm.all_populations_.mean(0)
     elif hasattr(msm, 'populations_'):
         tmat = msm.transmat_
+        pop = msm.populations_
 
     graph = nx.Graph(tmat)
 
     if not ax:
         ax = pp.gca()
 
-    if not pos:
+    if pos is None:
         pos = nx.spring_layout(graph)
+
+    if node_size is None:
+        node_size = 5000. * pop
 
     if isinstance(node_size, (list, np.ndarray)):
         node_size = [node_size[i] for i in graph.nodes()]

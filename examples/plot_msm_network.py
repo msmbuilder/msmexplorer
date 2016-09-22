@@ -35,5 +35,5 @@ msm.fit(clustered_trajs)
 
 # Plot MSM Network
 pos = dict(zip(range(clusterer.n_clusters), clusterer.cluster_centers_))
-msme.plot_msm_network(msm, pos=pos, node_size=5000 * msm.populations_,
-                      node_color='pomegranate', edge_color='carbon')
+msme.plot_msm_network(msm, pos=pos, node_color='pomegranate',
+                      edge_color='carbon')

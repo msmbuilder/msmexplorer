@@ -3,7 +3,7 @@ from scipy.constants import Avogadro, Boltzmann, calorie_th
 from matplotlib import pyplot as pp
 
 from corner import corner
-import seaborn.apionly as sns
+import seaborn as sns
 from seaborn.distributions import (_scipy_univariate_kde, _scipy_bivariate_kde)
 
 from ..utils import msme_colors

@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as pp
-import seaborn.apionly as sns
+import seaborn as sns
 
 from ..utils import msme_colors
 

@@ -43,7 +43,8 @@ def plot_pop_resids(msm, **kwargs):
 
 @msme_colors
 def plot_msm_network(msm, pos=None, node_size=300, node_color='pomegranate',
-                     edge_color='carbon', ax=None, with_labels=True, **kwargs):
+                     edge_color='carbon', alpha=.7, ax=None, with_labels=True,
+                     **kwargs):
     """
     Plot MSM network diagram.
 
@@ -55,14 +56,16 @@ def plot_msm_network(msm, pos=None, node_size=300, node_color='pomegranate',
         Node positions in dict format (e.g. {node_id : [x, y]})
     node_color : str or [r, g, b], optional
         networkx node colors
-    node_size : int, optional
+    node_size : int or list, optional
         networkx node size
-    node_size : str or [r, g, b], optional
+    node_color : str, optional
         networkx edge color
     ax : matplotlib axis, optional (default: None)
         Axis to plot on, otherwise uses current axis.
     with_labels : boolean, optional
         Whether or not to include node labels (default: True)
+    alpha : float, optional  (default: 0.7)
+        Opacity of nodes
     **kwargs : dict, optional
         Extra arguments to pass to networkx.draw_networkx
 
@@ -82,8 +85,18 @@ def plot_msm_network(msm, pos=None, node_size=300, node_color='pomegranate',
     if not ax:
         ax = pp.gca()
 
+    if not pos:
+        pos = nx.spring_layout(graph)
+
+    if isinstance(node_size, (list, np.ndarray)):
+        node_size = [node_size[i] for i in graph.nodes()]
+
+    if isinstance(node_color, (list, np.ndarray)):
+        node_color = [node_color[i] for i in graph.nodes()]
+
     nx.draw_networkx(graph, pos=pos, node_color=node_color,
-                     edge_color=edge_color, ax=ax, **kwargs)
+                     node_size=node_size, edge_color=edge_color, ax=ax,
+                     with_labels=with_labels, alpha=alpha, **kwargs)
 
     return ax
 

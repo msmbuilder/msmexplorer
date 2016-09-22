@@ -1,6 +1,6 @@
 """
-MSM Network Plot
-================
+Transition Pathway Plot
+=======================
 """
 from msmbuilder.featurizer import DihedralFeaturizer
 from msmbuilder.decomposition import tICA

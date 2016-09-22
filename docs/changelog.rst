@@ -24,6 +24,10 @@ New Features
 Improvements
 ~~~~~~~~~~~~
 
+- ``plot_msm_network`` and ``plot_tpaths`` can now handle lists as
+  ``node_color`` and ``node_size`` (#61).
+- ``extract_palette`` can now handle rgb tuples and lists (#61).
+
 
 v0.2.0 (September 15, 2016)
 ---------------------------

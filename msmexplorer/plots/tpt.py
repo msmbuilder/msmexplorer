@@ -50,6 +50,11 @@ def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
         matplotlib figure axis
 
     """
+    if hasattr(msm, 'all_populations_'):
+        pop = msm.all_populations_.mean(0)
+    elif hasattr(msm, 'populations_'):
+        pop = msm.populations_
+
     net_flux = tpt.net_fluxes(sources, sinks, msm,
                               for_committors=for_committors)
     paths, _ = tpt.paths(sources, sinks, net_flux, num_paths=num_paths)
@@ -62,8 +67,11 @@ def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
     if not ax:
         ax = pp.gca()
 
-    if not pos:
+    if pos is None:
         pos = nx.spring_layout(graph)
+
+    if node_size is None:
+        node_size = 5000. * pop
 
     if isinstance(node_size, (list, np.ndarray)):
         node_size = [node_size[i] for i in graph.nodes()]

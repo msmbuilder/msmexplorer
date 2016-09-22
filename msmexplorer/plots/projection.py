@@ -151,7 +151,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                         zorder=1, vmin=vmin, vmax=vmax)
         cs = ax.contour(X, Y, Z - Z.min(), cmap=pp.get_cmap('bone_r'),
                         levels=np.linspace(vmin, vmax, n_levels), alpha=1,
-                        zorder=2, vmin=vmin, vmax=vmax)
+                        zorder=1, vmin=vmin, vmax=vmax)
 
         if clabel:
             if not clabel_kwargs:

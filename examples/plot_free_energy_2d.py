@@ -30,7 +30,7 @@ clusterer = MiniBatchKMeans(n_clusters=12, random_state=rs)
 clustered_trajs = clusterer.fit_transform(tica_trajs)
 
 # Construct MSM
-msm = MarkovStateModel(lag_time=2, n_timescales=5)
+msm = MarkovStateModel(lag_time=2)
 assignments = msm.fit_transform(clustered_trajs)
 
 # Plot Free Energy

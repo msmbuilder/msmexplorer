@@ -1,6 +1,7 @@
 import re
 import inspect
 import functools
+import numpy as np
 from matplotlib.colors import LinearSegmentedColormap
 
 from .palettes import all_colors
@@ -29,8 +30,12 @@ def extract_palette(color_palette):
         colors = list(color_palette.values())
         if all(map(ishex, colors)):
             return colors
-    elif isinstance(color_palette, list):
+    elif isrgb(color_palette):
+        return color_palette
+    elif isinstance(color_palette, (list, tuple, np.ndarray)):
         if all(map(ishex, color_palette)):
+            return color_palette
+        elif all(map(isrgb, color_palette)):
             return color_palette
         elif all([color in all_colors.keys() for color in color_palette]):
             return [all_colors.get(color) for color in color_palette]
@@ -108,11 +113,18 @@ def get_kwargs(func):
 
 def ishex(color):
     # Adapted from http://stackoverflow.com/questions/30241375/python-how-to-check-if-string-is-a-hex-color-code
-    match = re.search(r'^#(?:[0-9a-fA-F]{1,2}){3}$', color)
+    match = re.search(r'^#(?:[0-9a-fA-F]{1,2}){3}$', str(color))
 
     if match:
         return True
     return False
+
+
+def isrgb(color):
+    return (isinstance(color, (tuple, list, np.ndarray)) and
+            (len(color) == 3 or len(color) == 4) and
+            all([isinstance(item, (float, int)) for item in color])
+            )
 
 
 def hex2rgb(color):

@@ -3,7 +3,7 @@
 Changelog
 =========
 
-v0.3.0 (Development)
+v0.3.0 (October 24, 2016)
 --------------------
 
 API Changes
@@ -14,11 +14,6 @@ API Changes
   otherwise false. It previously always defaulted to True (#54).
 - ``plot_voronoi`` accepts a new parameter ``alpha`` (#55).
 - ``plot_voronoi`` will not set axis limits if you specify ``ax`` (#55).
-
-
-New Features
-~~~~~~~~~~~~
-
 
 
 Improvements

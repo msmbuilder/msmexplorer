@@ -41,7 +41,7 @@ Documentation
 
 Online documentation is available [here](http://msmbuilder.org/msmexplorer/). It includes IPython notebooks, detailed API documentation, and other useful info.
 
-There are docs for the development version [here](http://msmbuilder.org/msmexplorer/development). These should more or less correspond with the github master branch, but they're not built automatically and thus may fall out of sync at times.
+There are docs for the development version [here](http://msmbuilder.org/msmexplorer/development). These should correspond with the github master branch.
 
 Examples
 --------

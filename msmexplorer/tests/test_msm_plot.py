@@ -26,7 +26,7 @@ def test_plot_msm_network():
 
 
 def test_plot_timescales_msm():
-    ax = plot_timescales(msm)
+    ax = plot_timescales(msm, n_timescales=3, xlabel='x', ylabel='y')
 
     assert isinstance(ax, SubplotBase)
 

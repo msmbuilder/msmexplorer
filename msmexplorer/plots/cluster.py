@@ -2,15 +2,16 @@ import numpy as np
 from matplotlib import pyplot as pp
 from scipy.spatial import Voronoi
 
-from ..utils import extract_palette
+from ..utils import msme_colors
 from ..palettes import msme_rgb
 
 __all__ = ['plot_voronoi']
 
 
+@msme_colors
 def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
                  radius=None, color_palette=None, xlabel=None, ylabel=None,
-                 labelsize=14):
+                 labelsize=14, alpha=0.4):
     """
     Plot voronoi regions in a 2D diagram.
 
@@ -34,6 +35,8 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
         y-axis label
     labelsize : int, optional (default: 14)
         x- and y-label font size
+    alpha : float, optional (default: 0.4)
+        The alpha value of the fill
 
     Returns
     -------
@@ -45,9 +48,12 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
 
     if not ax:
         ax = pp.gca()
+        we_made_ax = True
+    else:
+        we_made_ax = False
 
     if not color_palette:
-        color_palette = msme_rgb
+        color_palette = list(msme_rgb.values())
 
     if len(obs) != 2:
         assert ValueError('obs must be a tuple')
@@ -59,7 +65,7 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
 
     center = vor.points.mean(axis=0)
     if radius is None:
-        radius = vor.points.ptp().max()*2
+        radius = vor.points.ptp().max() * 2
 
     # Construct a map containing all ridges for a given point
     all_ridges = {}
@@ -111,15 +117,13 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
 
     vertices = np.asarray(new_vertices)
 
-    colors = extract_palette(color_palette)
-
     for i, region in enumerate(new_regions):
-        color = colors[i % len(colors)]
+        color = color_palette[i % len(color_palette)]
         polygon = vertices[region]
-        ax.fill(*zip(*polygon), color=color, alpha=0.4)
+        ax.fill(*zip(*polygon), color=color, alpha=alpha)
 
     if cluster_centers:
-        ax.scatter(*kmeans.cluster_centers_.T, c='k')
+        ax.scatter(*kmeans.cluster_centers_[:, obs].T, c='k')
 
     if xlabel:
         ax.set_xlabel(xlabel, size=labelsize)
@@ -127,8 +131,9 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
     if ylabel:
         ax.set_ylabel(ylabel, size=labelsize)
 
-    ax.axis('equal')
-    ax.set_xlim((vor.min_bound[0] - 0.1, vor.max_bound[0] + 0.1))
-    ax.set_ylim((vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1))
+    if we_made_ax:
+        ax.axis('equal')
+        ax.set_xlim((vor.min_bound[0] - 0.1, vor.max_bound[0] + 0.1))
+        ax.set_ylim((vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1))
 
     return ax

@@ -2,11 +2,11 @@ import numpy as np
 from scipy.constants import Avogadro, Boltzmann, calorie_th
 from matplotlib import pyplot as pp
 
-from corner import corner as plot_histogram
-import seaborn.apionly as sns
+from corner import corner
+import seaborn as sns
 from seaborn.distributions import (_scipy_univariate_kde, _scipy_bivariate_kde)
 
-from msmexplorer.palettes import all_rgb
+from ..utils import msme_colors
 
 __all__ = ['plot_histogram', 'plot_free_energy']
 
@@ -17,12 +17,16 @@ def _thermo_transform(Z, temperature):
     return - THERMO_CONSTANT * temperature * np.log(Z)
 
 
+plot_histogram = msme_colors(corner)
+
+
+@msme_colors
 def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                      pi=None, bw='scott', gridsize=30, cut=3, clip=None,
                      color='beryl', shade=True, alpha=0.5, cmap='bone',
                      vmin=None, vmax=None, n_levels=10, clabel=False,
                      clabel_kwargs=None, xlabel=None, ylabel=None,
-                     labelsize=14):
+                     labelsize=14, random_state=None):
     """
     Plot free energy of observable(s) in kilocalories per mole.
 
@@ -79,6 +83,10 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         y-axis label
     labelsize : int, optional (default: 14)
         x- and y-label font size
+    random_state : integer or numpy.RandomState, optional
+        The generator used to initialize the centers. If an integer is
+        given, it fixes the seed. Defaults to the global numpy random
+        number generator
 
     Returns
     -------
@@ -98,9 +106,12 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
     if isinstance(obs, int):
         obs = (obs,)
 
+    if isinstance(random_state, (int, type(None))):
+        random_state = np.random.RandomState(random_state)
+
     prune = data[:, obs]
     if n_samples:
-        idx = np.random.choice(range(data.shape[0]), size=n_samples, p=pi)
+        idx = random_state.choice(range(data.shape[0]), size=n_samples, p=pi)
         prune = prune[idx, :]
 
     if prune.shape[1] == 1:
@@ -112,9 +123,10 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
         Z = _thermo_transform(Z, temperature)
 
-        ax.plot(X, Z, color=all_rgb[color])
+        ax.plot(X, Z - Z.min(), color=color)
 
-        ax.fill_between(X, Z, Z.max(), facecolor=all_rgb[color], alpha=alpha)
+        ax.fill_between(X, Z - Z.min(), Z.max() - Z.min(),
+                        facecolor=color, alpha=alpha)
 
     elif prune.shape[1] == 2:
 
@@ -139,7 +151,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                         zorder=1, vmin=vmin, vmax=vmax)
         cs = ax.contour(X, Y, Z - Z.min(), cmap=pp.get_cmap('bone_r'),
                         levels=np.linspace(vmin, vmax, n_levels), alpha=1,
-                        zorder=2, vmin=vmin, vmax=vmax)
+                        zorder=1, vmin=vmin, vmax=vmax)
 
         if clabel:
             if not clabel_kwargs:

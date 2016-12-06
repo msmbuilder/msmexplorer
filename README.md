@@ -7,7 +7,7 @@ MSMExplorer: data visualizations for biomolecular dynamics
 [![PyPI version](https://badge.fury.io/py/msmexplorer.svg)](http://badge.fury.io/py/msmexplorer)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat)]  (https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/docs-latest-blue.svg?style=flat)] (http://msmbuilder.org/msmexplorer/)
-[![DOI](https://zenodo.org/badge/9890/msmexplorer/msmexplorer.svg)](https://zenodo.org/badge/latestdoi/9890/msmexplorer/msmexplorer)
+[![DOI](https://zenodo.org/badge/47228682.svg)](https://zenodo.org/badge/latestdoi/47228682)
 
 
 <div class="row">
@@ -41,7 +41,7 @@ Documentation
 
 Online documentation is available [here](http://msmbuilder.org/msmexplorer/). It includes IPython notebooks, detailed API documentation, and other useful info.
 
-There are docs for the development version [here](http://msmbuilder.org/msmexplorer/development). These should more or less correspond with the github master branch, but they're not built automatically and thus may fall out of sync at times.
+There are docs for the development version [here](http://msmbuilder.org/msmexplorer/development). These should correspond with the github master branch.
 
 Examples
 --------
@@ -53,14 +53,14 @@ from msmbuilder.featurizer import RMSDFeaturizer
 import msmexplorer as msme
 
 # Load Fs Peptide Data
-traj = FsPeptide().get().trajectories
+traj = FsPeptide().get().trajectories[0]
 
 # Calculate RMSD
-featurizer = RMSDFeaturizer(reference_traj=traj[0][0])
-rmsd = featurizer.transform(traj)
+featurizer = RMSDFeaturizer(reference_traj=traj[0])
+rmsd = featurizer.partial_transform(traj).flatten()
 
 # Plot Trace
-msme.plot_trace(rmsd[0].flatten(), label='traj0', xlabel='Timestep', ylabel='RMSD (nm)')
+msme.plot_trace(rmsd, label='traj0', xlabel='Timestep', ylabel='RMSD (nm)')
 ```
 
 ![](http://msmbuilder.org/msmexplorer/development/_images/plot_trace.png)
@@ -140,7 +140,7 @@ Citing
   title        = {MSMExplorer},
   month        = aug,
   year         = 2016,
-  doi          = {10.5281/zenodo.61277},
-  url          = {http://dx.doi.org/10.5281/zenodo.61277}
+  doi          = {10.5281/zenodo.154092},
+  url          = {http://dx.doi.org/10.5281/zenodo.154092}
 }
 ```

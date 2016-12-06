@@ -49,3 +49,13 @@ Miscellaneous plots
 
     plot_chord
     plot_trace
+
+Utilities
+-------------------
+
+.. autosummary::
+    :toctree: generated/
+
+    utils.extract_palette
+    utils.make_colormap
+    utils.msme_colors

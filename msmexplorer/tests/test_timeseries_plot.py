@@ -8,7 +8,7 @@ data = rs.rand(100000)
 
 
 def test_plot_trace():
-    ax, side_ax = plot_trace(data)
+    ax, side_ax = plot_trace(data, xlabel='x', ylabel='y')
 
     assert isinstance(ax, SubplotBase)
     assert isinstance(side_ax, SubplotBase)

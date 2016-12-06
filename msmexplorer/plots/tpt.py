@@ -11,7 +11,7 @@ __all__ = ['plot_tpaths']
 
 @msme_colors
 def plot_tpaths(msm, sources, sinks, for_committors=None, num_paths=1,
-                pos=None, node_size=300, node_color='pomegranate',
+                pos=None, node_size=None, node_color='pomegranate',
                 edge_color='carbon', alpha=.7, with_labels=True, ax=None,
                 **kwargs):
     """

@@ -123,7 +123,7 @@ def plot_voronoi(kmeans, ax=None, obs=(0, 1), cluster_centers=True,
         ax.fill(*zip(*polygon), color=color, alpha=alpha)
 
     if cluster_centers:
-        ax.scatter(*kmeans.cluster_centers_.T, c='k')
+        ax.scatter(*kmeans.cluster_centers_[:, obs].T, c='k')
 
     if xlabel:
         ax.set_xlabel(xlabel, size=labelsize)

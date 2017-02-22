@@ -25,7 +25,8 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                      pi=None, bw='scott', gridsize=30, cut=3, clip=None,
                      color='beryl', shade=True, alpha=0.5, cmap='bone',
                      vmin=None, vmax=None, n_levels=10, clabel=False,
-                     clabel_kwargs=None, xlabel=None, ylabel=None,
+                     clabel_kwargs=None, cbar=False, cbar_kwargs=None,
+                     xlabel=None, ylabel=None,
                      labelsize=14, random_state=None):
     """
     Plot free energy of observable(s) in kilocalories per mole.
@@ -77,6 +78,10 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         Adds labels to contours in counter plot.
     clabel_kwargs : dict, optional
         Arguments to pass to matplotlib clabel.
+    cbar: bool, optional (default: False)
+        Adds a colorbar that maps the free energy colours
+    cbar_kwargs: dict, optional
+        Arguments to pass to matplotlib cbar
     xlabel : str, optional
         x-axis label
     ylabel : str, optional
@@ -146,9 +151,9 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
             vmax = np.percentile(Z, 50)
 
         if shade:
-            ax.contourf(X, Y, Z - Z.min(), cmap=pp.get_cmap(cmap),
-                        levels=np.linspace(vmin, vmax, n_levels), alpha=alpha,
-                        zorder=1, vmin=vmin, vmax=vmax)
+            cf = ax.contourf(X, Y, Z - Z.min(), cmap=pp.get_cmap(cmap),
+                             levels=np.linspace(vmin, vmax, n_levels), alpha=alpha,
+                             zorder=1, vmin=vmin, vmax=vmax)
         cs = ax.contour(X, Y, Z - Z.min(), cmap=pp.get_cmap('bone_r'),
                         levels=np.linspace(vmin, vmax, n_levels), alpha=1,
                         zorder=1, vmin=vmin, vmax=vmax)
@@ -158,6 +163,15 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                 clabel_kwargs = {}
 
             ax.clabel(cs, **clabel_kwargs)
+
+        if cbar:
+            if not cbar_kwargs:
+                cbar_kwargs = {}
+            if shade:
+                mappable = cf
+            else:
+                mappable = cs
+            pp.colorbar(mappable, **cbar_kwargs)
 
         ax.grid(zorder=0)
 

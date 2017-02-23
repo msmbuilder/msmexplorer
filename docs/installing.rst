@@ -72,6 +72,6 @@ Bugs
 Please report any bugs you encounter through the github `issue tracker
 <https://github.com/msmexplorer/msmexplorer/issues/new>`_. It will be most
 helpful to include a reproducible example. It is difficult debug any issues
-without knowing the versions of ``msmexplorer`` and ``matplotlib`` you are
-using, as well as what ``matplotlib`` backend you are using to draw the plots,
-so please include those in your bug report.
+without knowing the versions of ``msmexplorer``, ``seaborn``, and
+``matplotlib`` you are using, as well as what ``matplotlib`` backend you are
+using to draw the plots, so please include those in your bug report.

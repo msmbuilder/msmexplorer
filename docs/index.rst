@@ -66,6 +66,9 @@ To see the code or report a bug, please visit the `github repository
 
    colors
    changelog
+   installing
+   contributing
+   papers
 
 .. raw:: html
 

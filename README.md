@@ -135,12 +135,13 @@ Citing
 
 ```bibtex
 @misc{msmexplorer,
-  author       = {Carlos X. Hernández  and
-                  Vijay S. Pande},
-  title        = {MSMExplorer},
-  month        = aug,
+  author       = {Hern{\'{a}}ndez, Carlos and
+                  Harrigan, Matthew and
+                  Pande, Vijay},
+  title        = {msmexplorer/msmexplorer: MSMExplorer 0.3},
+  month        = oct,
   year         = 2016,
-  doi          = {10.5281/zenodo.154092},
-  url          = {http://dx.doi.org/10.5281/zenodo.154092}
+  doi          = {10.5281/zenodo.162942},
+  url          = {https://doi.org/10.5281/zenodo.162942}
 }
 ```

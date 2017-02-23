@@ -37,4 +37,10 @@ assignments = msm.fit_transform(clustered_trajs)
 data = np.concatenate(tica_trajs, axis=0)
 pi_0 = msm.populations_[np.concatenate(assignments, axis=0)]
 msme.plot_free_energy(data, obs=(0, 1), n_samples=100000, pi=pi_0,
-                      random_state=rs)
+                      random_state=rs,
+                      shade=True,
+                      clabel=True,
+                      clabel_kwargs={'fmt': '%.1f'},
+                      cbar=True,
+                      cbar_kwargs={'format': '%.1f', 'label': 'Free energy (kcal/mol)'}
+                      )

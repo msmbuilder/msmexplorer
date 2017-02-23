@@ -15,8 +15,8 @@ API Changes
 New Features
 ~~~~~~~~~~~~
 
-- ``plot_free_energy`` now accepts two extra arguments, ``cbar`` and ``cbar_kwargs``
-  to add a colorbar and control it's aesthetics (#73).
+- ``plot_free_energy`` now accepts two extra arguments, ``cbar`` and
+  ``cbar_kwargs`` to add a colorbar and control its aesthetics (#73).
 
 
 Improvements

@@ -7,7 +7,6 @@ Changelog
 v0.4.0 (Development)
 --------------------
 
-
 API Changes
 ~~~~~~~~~~~
 
@@ -21,6 +20,7 @@ New Features
 
 Improvements
 ~~~~~~~~~~~~
+- The ``shade`` option now works for ``plot_free_energy`` in the 1D case.
 
 
 v0.3.0 (October 24, 2016)

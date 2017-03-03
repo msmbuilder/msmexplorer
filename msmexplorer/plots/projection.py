@@ -130,7 +130,8 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
         ax.plot(X, Z - Z.min(), color=color)
 
-        ax.fill_between(X, Z - Z.min(), Z.max() - Z.min(),
+        if shade:
+            ax.fill_between(X, Z - Z.min(), Z.max() - Z.min(),
                         facecolor=color, alpha=alpha)
 
     elif prune.shape[1] == 2:

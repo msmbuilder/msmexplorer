@@ -22,13 +22,11 @@ requirements:
     - pandas
     - msmbuilder
     - mdtraj
-    - nglview
     - matplotlib
     - seaborn
     - statsmodels
     - networkx
     - corner
-    - six
 
 test:
 
@@ -43,7 +41,7 @@ test:
     - matplotlib
 
   commands:
-    - nosetests -v msmexplorer --with-timer --with-coverage  --cover-package=msmexplorer
+    - QT_QPA_PLATFORM="offscreen" nosetests -v msmexplorer --with-timer --with-coverage  --cover-package=msmexplorer
 
 about:
   home: https://github.com/msmexplorer/msmexplorer

@@ -75,6 +75,8 @@ Dependencies
 
 ### Mandatory
 
+The latest versions of the following packages are required:
+
 -  [numpy](http://www.numpy.org/)
 
 -  [scipy](http://www.scipy.org/)

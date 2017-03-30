@@ -123,7 +123,7 @@ Development
 -----------
 
 All development happens here, on
-(Github)[https://github.com/msmexplorer/msmexplorer].
+[Github](https://github.com/msmexplorer/msmexplorer).
 
 If you're interested in contributing to MSMExplorer, please refer to our
 [Contributing](http://msmbuilder.org/msmexplorer/development/contributing.html)

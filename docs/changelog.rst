@@ -4,12 +4,8 @@ Changelog
 =========
 
 
-v0.4.0 (Development)
---------------------
-
-API Changes
-~~~~~~~~~~~
-
+v1.0.0 (March 30, 2017)
+-----------------------
 
 New Features
 ~~~~~~~~~~~~
@@ -20,8 +16,9 @@ New Features
 
 Improvements
 ~~~~~~~~~~~~
-- The ``shade`` option now works for ``plot_free_energy`` in the 1D case.
-
+- The ``shade`` option now works for ``plot_free_energy`` in the 1D case (#76).
+- Fixed an issue where adding cluster centers would break the visualization
+if ``ndim`` > 2 (#70).
 
 v0.3.0 (October 24, 2016)
 -------------------------

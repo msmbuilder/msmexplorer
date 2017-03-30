@@ -126,6 +126,10 @@ https://github.com/msmexplorer/msmexplorer
 
 Please [submit](https://github.com/msmexplorer/msmexplorer/issues/new) any bugs you encounter to the Github issue tracker.
 
+If you're interested in contributing to MSMExplorer, please refer to our
+[Contributing](http://msmbuilder.org/msmexplorer/development/contributing.html)
+guide.
+
 License
 -------
 

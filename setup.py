@@ -6,9 +6,7 @@ MSMExplorer: Visualizations for statistical models of biomolecular dynamics
 
 import sys
 import subprocess
-import numpy as np
-from os.path import join as pjoin
-from setuptools import setup, Extension, find_packages
+from setuptools import setup, find_packages
 
 from distutils.spawn import find_executable
 try:
@@ -17,17 +15,6 @@ try:
     from basesetup import write_version_py
 finally:
     sys.dont_write_bytecode = False
-
-try:
-    import Cython
-    from Cython.Distutils import build_ext
-
-    if Cython.__version__ < '0.18':
-        raise ImportError()
-except ImportError:
-    print(
-        'Cython version 0.18 or later is required. Try "conda install cython"')
-    sys.exit(1)
 
 NAME = "msmexplorer"
 VERSION = "0.4.0.dev0"
@@ -47,13 +34,6 @@ def readme_to_rst():
         'description': short_description,
         'long_description': long_description,
     }
-
-
-extensions = []
-extensions.append(
-    Extension('msmexplorer.example_datasets._muller',
-              sources=[pjoin('msmexplorer', 'example_datasets', '_muller.pyx')],
-              include_dirs=[np.get_include()]))
 
 
 def main(**kwargs):
@@ -92,8 +72,6 @@ def main(**kwargs):
                    'requirements.txt'],
         },
         zip_safe=False,
-        ext_modules=extensions,
-        cmdclass={'build_ext': build_ext},
         **kwargs
     )
 

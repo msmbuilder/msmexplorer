@@ -122,13 +122,18 @@ You may instead want to use the development version from Github, by running
 Development
 -----------
 
-https://github.com/msmexplorer/msmexplorer
-
-Please [submit](https://github.com/msmexplorer/msmexplorer/issues/new) any bugs you encounter to the Github issue tracker.
+All development happens here, on
+(Github)[https://github.com/msmexplorer/msmexplorer].
 
 If you're interested in contributing to MSMExplorer, please refer to our
 [Contributing](http://msmbuilder.org/msmexplorer/development/contributing.html)
 guide.
+
+Support
+-------
+
+Please [submit](https://github.com/msmexplorer/msmexplorer/issues/new) any bugs
+or questions to the Github issue tracker.
 
 License
 -------

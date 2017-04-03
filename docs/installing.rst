@@ -38,6 +38,8 @@ Dependencies
 Mandatory dependencies
 ^^^^^^^^^^^^^^^^^^^^^^
 
+The latest versions of the following packages are required:
+
 -  `numpy <http://www.numpy.org/>`__
 
 -  `scipy <http://www.scipy.org/>`__

@@ -79,7 +79,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
     clabel_kwargs : dict, optional
         Arguments to pass to matplotlib clabel.
     cbar: bool, optional (default: False)
-        Adds a colorbar that maps the free energy colours
+        Adds a colorbar that maps the free energy colors
     cbar_kwargs: dict, optional
         Arguments to pass to matplotlib cbar
     xlabel : str, optional

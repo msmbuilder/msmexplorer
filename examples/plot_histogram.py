@@ -2,13 +2,14 @@
 Histogram Plot
 ==============
 """
+from msmbuilder.example_datasets import FsPeptide
 from msmbuilder.featurizer import DihedralFeaturizer
 from msmbuilder.decomposition import tICA
 
 import numpy as np
 
 import msmexplorer as msme
-from msmexplorer.example_datasets import FsPeptide
+
 
 # Load Fs Peptide Data
 trajs = FsPeptide().get().trajectories

@@ -3,13 +3,21 @@
 Changelog
 =========
 
+v1.0.1 (Development)
+-----------------------
+
+New Features
+~~~~~~~~~~~~
+
+- ``plot_free_energy`` now accepts a ``return_data`` flag that will return 
+  the data used for the free energy plot(#78).
+
 
 v1.0.0 (March 30, 2017)
 -----------------------
 
 New Features
 ~~~~~~~~~~~~
-
 - ``plot_free_energy`` now accepts two extra arguments, ``cbar`` and
   ``cbar_kwargs`` to add a colorbar and control its aesthetics (#73).
 

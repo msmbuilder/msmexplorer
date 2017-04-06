@@ -1,12 +1,10 @@
-language: python
+language: c
 sudo: false
 env:
-  include:
-    matrix:
-    - python: 3.4
-      env: CONDA_PY=3.4
-    - python: 3.5
-      env: CONDA_PY=3.5
+  matrix:
+  - CONDA_PY=3.4
+  - CONDA_PY=3.5
+  - CONDA_PY=3.6
 branches:
   only:
   - master

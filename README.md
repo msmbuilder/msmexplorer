@@ -6,8 +6,8 @@ MSMExplorer: data visualizations for biomolecular dynamics
 [![Coverage Status](https://coveralls.io/repos/github/msmexplorer/msmexplorer/badge.svg?branch=master)](https://coveralls.io/github/msmexplorer/msmexplorer?branch=master)
 [![PyPI version](https://badge.fury.io/py/msmexplorer.svg)](http://badge.fury.io/py/msmexplorer)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://opensource.org/licenses/MIT)
+[![DOI](http://joss.theoj.org/papers/f9485c45a7bfc5cfce6edd8919a07739/status.svg)](http://joss.theoj.org/papers/f9485c45a7bfc5cfce6edd8919a07739)
 [![Documentation](https://img.shields.io/badge/docs-latest-blue.svg?style=flat)](http://msmbuilder.org/msmexplorer/)
-[![DOI](https://zenodo.org/badge/47228682.svg)](https://zenodo.org/badge/latestdoi/47228682)
 
 
 <div class="row">

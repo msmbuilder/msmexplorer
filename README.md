@@ -146,13 +146,15 @@ Citing
 
 ```bibtex
 @misc{msmexplorer,
-  author       = {Hern{\'{a}}ndez, Carlos and
-                  Harrigan, Matthew and
-                  Pande, Vijay},
-  title        = {msmexplorer/msmexplorer: MSMExplorer 0.3},
-  month        = oct,
-  year         = 2016,
-  doi          = {10.5281/zenodo.162942},
-  url          = {https://doi.org/10.5281/zenodo.162942}
+  author       = {Hern{\'{a}}ndez, Carlos X. and
+                  Harrigan, Matthew p> and
+                  Eiros, Juan and
+                  Sultan, Mohammad M. and
+                  Pande, Vijay S.},
+  title        = {msmexplorer/msmexplorer: MSMExplorer 1.0.0},
+  month        = Apr,
+  year         = 2017,
+  doi          = {10.5281/zenodo.439774},
+  url          = {https://doi.org/10.5281/zenodo.439774}
 }
 ```

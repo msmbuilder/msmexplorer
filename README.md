@@ -147,7 +147,7 @@ Citing
 ```bibtex
 @misc{msmexplorer,
   author       = {Hern{\'{a}}ndez, Carlos X. and
-                  Harrigan, Matthew p> and
+                  Harrigan, Matthew P. and
                   Eiros, Juan and
                   Sultan, Mohammad M. and
                   Pande, Vijay S.},

@@ -145,16 +145,16 @@ Citing
 ------
 
 ```bibtex
-@misc{msmexplorer,
-  author       = {Hern{\'{a}}ndez, Carlos X. and
-                  Harrigan, Matthew P. and
-                  Eiros, Juan and
-                  Sultan, Mohammad M. and
-                  Pande, Vijay S.},
-  title        = {msmexplorer/msmexplorer: MSMExplorer 1.0.0},
-  month        = Apr,
-  year         = 2017,
-  doi          = {10.5281/zenodo.439774},
-  url          = {https://doi.org/10.5281/zenodo.439774}
+@article{msmexplorer,
+  doi = {10.21105/joss.00188},
+  url = {https://doi.org/10.21105%2Fjoss.00188},
+  year  = {2017},
+  month = {apr},
+  publisher = {The Open Journal},
+  volume = {2},
+  number = {12},
+  author = {Carlos X. Hern{\'{a}}ndez and Matthew P. Harrigan and Mohammad M. Sultan and Vijay S. Pande},
+  title = {{MSMExplorer}: Data Visualizations for Biomolecular Dynamics},
+  journal = {The Journal of Open Source Software}
 }
 ```

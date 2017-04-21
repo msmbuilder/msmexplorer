@@ -43,7 +43,7 @@ def test_plot_implied_timescales():
     for lag in lag_times:
         # Construct MSM
         msm = MarkovStateModel(lag_time=lag, n_timescales=5)
-        msm.fit(clustered_trajs)
+        msm.fit(data)
         msm_objs.append(msm)
     ax = plot_implied_timescales(msm_objs)
     assert isinstance(ax, SubplotBase)

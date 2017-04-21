@@ -196,6 +196,33 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
 @msme_colors
 def plot_implied_timescales(msm_list, n_timescales=None, show_error=True,
                             color_palette=None, xlabel=None, ylabel=None, ax=None):
+    """
+    Plot implied timescales as a function of the MSM lag time
+
+    Parameters
+    ----------
+    msm_list: list of msmbuilder.msm.MarkovStateModel objects
+        A list of msm objects, calculated at different lag times
+    n_timescales: int, optional
+        Number of timescales to display. If None, all will be displayed.
+    show_error: bool, optional
+        Wether to display the uncertainty estimation of the timescales as a
+        shadowed region
+    color_palette: list or dict, optional
+        Color palette to apply
+    xlabel : str, optional
+        x-axis label
+    ylabel : str, optional
+        y-axis label
+    ax : matplotlib axis, optional (default: None)
+        Axis to plot on, otherwise uses current axis.
+
+    Returns
+    -------
+    ax : matplotlib axis
+        matplotlib figure axis
+
+    """
     if n_timescales is None:
         n_timescales = len(msm_list[0].timescales_)
     elif n_timescales > len(msm_list[0].timescales_):

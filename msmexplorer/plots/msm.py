@@ -6,7 +6,8 @@ from matplotlib import pyplot as pp
 from ..utils import msme_colors
 from ..palettes import msme_rgb
 
-__all__ = ['plot_pop_resids', 'plot_msm_network', 'plot_timescales']
+__all__ = ['plot_pop_resids', 'plot_msm_network',
+           'plot_timescales', 'plot_implied_timescales']
 
 
 @msme_colors
@@ -189,4 +190,44 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
     for tick in ax.yaxis.get_major_ticks():
         tick.label.set_fontsize(16)
 
+    return ax
+
+
+@msme_colors
+def plot_implied_timescales(msm_list, n_timescales=None, show_error=True,
+                            color_palette=None, xlabel=None, ylabel=None, ax=None):
+    if n_timescales is None:
+        n_timescales = len(msm_list[0].timescales_)
+    elif n_timescales > len(msm_list[0].timescales_):
+        n_timescales = len(msm_list[0].timescales_)
+
+    lag_times = [msm.lag_time for msm in msm_list]
+
+    long_ts = [msm.timescales_[0] for msm in msm_list]
+    short_ts = [msm.timescales_[-1] for msm in msm_list]
+    ymin = 10 ** np.floor(np.log10(np.nanmin(short_ts)))
+    ymax = 10 ** np.ceil(np.log10(np.nanmax(long_ts)))
+
+    if not ax:
+        _, ax = pp.subplots(1, 1)
+    if not color_palette:
+        color_palette = list(msme_rgb.values())
+
+    for ts in range(n_timescales):
+        timescales = [msm.timescales_[ts] for msm in msm_list]
+        color = color_palette[ts % len(color_palette)]
+        pp.scatter(x=lag_times, y=timescales, color=color)
+        if show_error:
+            errors = [msm.uncertainty_timescales()[ts] for msm in msm_list]
+            pp.fill_between(x=lag_times,
+                            y1=[ts - err for ts, err in zip(timescales, errors)],
+                            y2=[ts + err for ts, err in zip(timescales, errors)],
+                            color=color)
+    ax.set_yscale('log')
+    if xlabel:
+        ax.xaxis.set_label_text(xlabel)
+    if ylabel:
+        ax.yaxis.set_label_text(ylabel)
+    ax.set_yscale('log')
+    ax.set_ylim([ymin, ymax])
     return ax

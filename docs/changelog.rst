@@ -9,7 +9,7 @@ v1.0.1 (Development)
 New Features
 ~~~~~~~~~~~~
 
-- Added a new function `plot_implied_timescales`` that accepts a list of msm objects
+- Added a new function ``plot_implied_timescales`` that accepts a list of msm objects
   calculated at different lag times. Returns an implied timescales plot (#90).
 
 - ``plot_free_energy`` now accepts a ``return_data`` flag that will return 

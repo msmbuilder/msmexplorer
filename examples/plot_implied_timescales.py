@@ -29,7 +29,7 @@ tica_trajs = tica_model.fit_transform(diheds)
 clusterer = MiniBatchKMeans(n_clusters=100, random_state=rs)
 clustered_trajs = clusterer.fit_transform(tica_trajs)
 
-lag_times = [1, 10, 50, 100, 200, 250, 500]
+lag_times = [1, 50, 100, 250, 500, 1000, 5000]
 msm_objs = []
 for lag in lag_times:
     # Construct MSM

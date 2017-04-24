@@ -18,6 +18,7 @@ New Features
 Improvements
 ~~~~~~~~~~~~
 
+- ``vmin`` in ``plot_free_energy`` is now set to ``1E-12`` unless otherwise specialized.
 
 v1.0.0 (March 30, 2017)
 -----------------------

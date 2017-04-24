@@ -223,22 +223,39 @@ def plot_implied_timescales(msm_list, n_timescales=None, show_error=True,
         matplotlib figure axis
 
     """
+    # Determine how many timescales to show in plot
     if n_timescales is None:
         n_timescales = len(msm_list[0].timescales_)
     elif n_timescales > len(msm_list[0].timescales_):
         n_timescales = len(msm_list[0].timescales_)
 
-    lag_times = [msm.lag_time for msm in msm_list]
-
-    long_ts = [msm.timescales_[0] for msm in msm_list]
-    short_ts = [msm.timescales_[-1] for msm in msm_list]
-    ymin = 10 ** np.floor(np.log10(np.nanmin(short_ts)))
-    ymax = 10 ** np.ceil(np.log10(np.nanmax(long_ts)))
-
+    # Create axis object
     if not ax:
         _, ax = pp.subplots(1, 1)
     if not color_palette:
         color_palette = list(msme_rgb.values())
+
+    # y axis setup
+    long_ts = [msm.timescales_[0] for msm in msm_list]
+    short_ts = [msm.timescales_[-1] for msm in msm_list]
+    ymin = 10 ** np.floor(np.log10(np.nanmin(short_ts)))
+    ymax = 10 ** np.ceil(np.log10(np.nanmax(long_ts)))
+    ax.set_yscale('log')
+    ax.set_ylim([ymin, ymax])
+    if ylabel:
+        ax.yaxis.set_label_text(ylabel)
+
+    # x axis setup
+    lag_times = [msm.lag_time for msm in msm_list]
+    if (max(lag_times) / min(lag_times)) >= 1e3:
+        xmin = 10 ** np.floor(np.log10(np.nanmin(lag_times)))
+        xmax = 10 ** np.ceil(np.log10(np.nanmax(lag_times)))
+        ax.set_xscale('log')
+    else:
+        xmin, xmax = min(lag_times), max(lag_times)
+    ax.set_xlim([xmin, xmax])
+    if xlabel:
+        ax.xaxis.set_label_text(xlabel)
 
     for ts in range(n_timescales):
         timescales = [msm.timescales_[ts] for msm in msm_list]

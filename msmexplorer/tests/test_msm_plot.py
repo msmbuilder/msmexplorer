@@ -38,7 +38,7 @@ def test_plot_timescales_bmsm():
 
 
 def test_plot_implied_timescales():
-    lag_times = [1, 10, 50, 100, 200, 250, 500]
+    lag_times = [1, 50, 100, 250, 500, 1000, 5000]
     msm_objs = []
     for lag in lag_times:
         # Construct MSM

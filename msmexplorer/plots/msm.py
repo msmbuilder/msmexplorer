@@ -250,7 +250,7 @@ def plot_implied_timescales(msm_list, n_timescales=None, show_error=True,
                             y1=[ts - err for ts, err in zip(timescales, errors)],
                             y2=[ts + err for ts, err in zip(timescales, errors)],
                             color=color)
-    ax.set_yscale('log')
+
     if xlabel:
         ax.xaxis.set_label_text(xlabel)
     if ylabel:

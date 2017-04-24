@@ -249,12 +249,6 @@ def plot_implied_timescales(msm_list, n_timescales=None, show_error=True,
             pp.fill_between(x=lag_times,
                             y1=[ts - err for ts, err in zip(timescales, errors)],
                             y2=[ts + err for ts, err in zip(timescales, errors)],
-                            color=color)
+                            color=color, alpha=0.5)
 
-    if xlabel:
-        ax.xaxis.set_label_text(xlabel)
-    if ylabel:
-        ax.yaxis.set_label_text(ylabel)
-    ax.set_yscale('log')
-    ax.set_ylim([ymin, ymax])
     return ax

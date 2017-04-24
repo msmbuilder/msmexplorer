@@ -158,7 +158,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         Z = _thermo_transform(Z, temperature)
 
         if not vmin:
-            vmin = np.percentile(Z, 0)
+            vmin = -1E-12
         if not vmax:
             vmax = np.percentile(Z, 50)
 

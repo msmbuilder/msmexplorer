@@ -15,21 +15,26 @@ New Features
 - ``plot_free_energy`` now accepts a ``return_data`` flag that will return 
   the data used for the free energy plot(#78).
 
+Improvements
+~~~~~~~~~~~~
+
 
 v1.0.0 (March 30, 2017)
 -----------------------
 
 New Features
 ~~~~~~~~~~~~
+
 - ``plot_free_energy`` now accepts two extra arguments, ``cbar`` and
   ``cbar_kwargs`` to add a colorbar and control its aesthetics (#73).
 
 
 Improvements
 ~~~~~~~~~~~~
+
 - The ``shade`` option now works for ``plot_free_energy`` in the 1D case (#76).
 - Fixed an issue where adding cluster centers would break the visualization
-if ``ndim`` > 2 (#70).
+  if ``ndim`` > 2 (#70).
 
 v0.3.0 (October 24, 2016)
 -------------------------

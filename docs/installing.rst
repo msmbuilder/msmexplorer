@@ -14,7 +14,7 @@ It's also possible to install the released version using
 
 .. code:: bash
 
-  $ conda install msmexplorer
+  $ conda install -c omnia msmexplorer
 
 Alternatively, you can use ``pip`` to install the development version, with the
 command:

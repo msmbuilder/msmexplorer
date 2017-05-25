@@ -105,8 +105,6 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         To remake 2 dim plots: contour(return_data[0],return_data[1],return_data[2])
     """
 
-    sns.set_style('whitegrid')
-
     if ax is None:
         ax = pp.gca()
 

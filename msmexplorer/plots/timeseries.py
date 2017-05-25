@@ -55,8 +55,6 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
 
     """
 
-    sns.set_style('whitegrid')
-
     if ax is None:
         if side_ax is not None:
             raise ValueError("If you're supplying ax, you must also "

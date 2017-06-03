@@ -14,6 +14,7 @@ msm.fit(data)
 bmsm = BayesianMarkovStateModel()
 bmsm.fit(data)
 
+
 class TestMSMPlot(PlotTestCase):
     """Test the function(s) that visualize MSMs."""
 

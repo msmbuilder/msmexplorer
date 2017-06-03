@@ -36,10 +36,9 @@ test:
   imports:
     - msmexplorer
     - msmexplorer.tests
-    - matplotlib
 
   commands:
-    - QT_QPA_PLATFORM="offscreen" nosetests -v msmexplorer --with-timer --with-coverage  --cover-package=msmexplorer
+    - MPLBACKEND="Agg" nosetests -v msmexplorer --with-timer --with-coverage  --cover-package=msmexplorer
 
 about:
   home: https://github.com/msmexplorer/msmexplorer

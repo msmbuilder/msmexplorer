@@ -7,6 +7,7 @@ from . import PlotTestCase
 rs = np.random.RandomState(42)
 data = rs.rand(100000)
 
+
 class TestTimeSeriesPlot(PlotTestCase):
     """Test the function(s) that visualize time-series."""
 

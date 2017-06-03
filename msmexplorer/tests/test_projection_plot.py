@@ -9,6 +9,7 @@ n = 100000
 rs = np.random.RandomState(42)
 data = rs.rand(n, 2)
 
+
 class TestProjectionPlot(PlotTestCase):
     """Test the function(s) that visualize projections."""
 

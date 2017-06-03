@@ -14,6 +14,7 @@ msm.fit(data)
 bmsm = BayesianMarkovStateModel()
 bmsm.fit(data)
 
+
 class TestTPTPlot(PlotTestCase):
     """Test the function(s) that visualize TPTs."""
 

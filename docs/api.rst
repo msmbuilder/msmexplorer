@@ -48,6 +48,7 @@ Miscellaneous plots
     :toctree: generated/
 
     plot_chord
+    plot_stackdist
     plot_trace
 
 Utilities

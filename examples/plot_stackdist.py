@@ -1,6 +1,6 @@
 """
-Chord Diagram
-=============
+Stacked Distribution Plot
+=========================
 """
 from msmbuilder.example_datasets import FsPeptide
 from msmbuilder.featurizer import DihedralFeaturizer

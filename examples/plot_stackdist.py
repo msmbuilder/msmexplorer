@@ -37,4 +37,7 @@ assignments = msm.fit_transform(clustered_trajs)
 a = np.concatenate(assignments, axis=0)
 d = np.concatenate(diheds, axis=0)
 
-msme.plot_stackdist([d[a == i][:, ::2] for i in [2, 5, 0]])
+# Plot Stacked Distributions of the sine of each Chi1 angle
+# within an arbitrary set of states {2, 5, 0}
+path_data = [d[a == i][:, ::2] for i in [2, 5, 0]]
+msme.plot_stackdist(path_data)

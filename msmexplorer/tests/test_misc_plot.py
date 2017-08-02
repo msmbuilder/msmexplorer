@@ -25,7 +25,7 @@ class TestStackedDistPlot(PlotTestCase):
 
     def test_plot_chord(self):
 
-        ax = plot_stackdist([ts])
+        ax = plot_stackdist([ts, ts])
 
         assert isinstance(ax, FacetGrid)
 

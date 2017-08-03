@@ -18,13 +18,12 @@ requirements:
 
   run:
     - python
-    - numpy
-    - pandas
     - msmbuilder
     - mdtraj
     - nglview
     - matplotlib
     - seaborn
+    - pandas
     - statsmodels
     - networkx
     - corner

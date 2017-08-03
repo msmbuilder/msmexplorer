@@ -46,7 +46,7 @@ deploy:
     local-dir: docs/_deploy/
     on:
       branch: master
-      condition: "$CONDA_PY = 3.5"
+      condition: "$CONDA_PY = 3.5 && $TRAVIS_OS_NAME = 'linux'"
     region: us-east-1
     detect_encoding: true
     access_key_id: $AWS_ACCESS_KEY

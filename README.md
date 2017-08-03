@@ -3,7 +3,6 @@ MSMExplorer: data visualizations for biomolecular dynamics
 
 [![Build Status](https://travis-ci.org/msmexplorer/msmexplorer.svg?branch=master)](https://travis-ci.org/msmexplorer/msmexplorer)
 [![Build status](https://ci.appveyor.com/api/projects/status/038hirce0vlx2847?svg=true)](https://ci.appveyor.com/project/cxhernandez/msmexplorer)
-[![Coverage Status](https://coveralls.io/repos/github/msmexplorer/msmexplorer/badge.svg?branch=master)](https://coveralls.io/github/msmexplorer/msmexplorer?branch=master)
 [![PyPI version](https://badge.fury.io/py/msmexplorer.svg)](http://badge.fury.io/py/msmexplorer)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![DOI](http://joss.theoj.org/papers/f9485c45a7bfc5cfce6edd8919a07739/status.svg)](http://joss.theoj.org/papers/f9485c45a7bfc5cfce6edd8919a07739)

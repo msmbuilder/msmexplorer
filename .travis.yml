@@ -21,6 +21,7 @@ addons:
 install:
 - source devtools/travis-ci/install_miniconda.sh
 - conda config --add channels conda-forge
+- conda config --add channels omnia
 
 before_script:
 - |

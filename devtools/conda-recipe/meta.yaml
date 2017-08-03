@@ -31,7 +31,6 @@ test:
   requires:
     - nose
     - nose-timer
-    - python-coveralls
 
   imports:
     - msmexplorer

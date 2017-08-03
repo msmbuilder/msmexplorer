@@ -1,6 +1,6 @@
 """
-Population Residuals Plot
-=========================
+Implied Timescales Plot
+===============
 """
 from msmbuilder.example_datasets import FsPeptide
 from msmbuilder.featurizer import DihedralFeaturizer
@@ -29,9 +29,16 @@ tica_trajs = tica_model.fit_transform(diheds)
 clusterer = MiniBatchKMeans(n_clusters=100, random_state=rs)
 clustered_trajs = clusterer.fit_transform(tica_trajs)
 
-# Construct MSM
-msm = MarkovStateModel(lag_time=2)
-msm.fit(clustered_trajs)
+lag_times = [1, 50, 100, 250, 500, 1000, 5000]
+msm_objs = []
+for lag in lag_times:
+    # Construct MSM
+    msm = MarkovStateModel(lag_time=lag, n_timescales=5)
+    msm.fit(clustered_trajs)
+    msm_objs.append(msm)
 
-# Plot MSM Network
-msme.plot_pop_resids(msm, color='tarragon')
+# Plot Timescales
+colors = ['pomegranate', 'beryl', 'tarragon', 'rawdenim', 'carbon']
+msme.plot_implied_timescales(msm_objs, color_palette=colors,
+                             xlabel='Lag time (frames)',
+                             ylabel='Implied Timescales ($ns$)')

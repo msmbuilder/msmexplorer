@@ -25,8 +25,9 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                      pi=None, bw='scott', gridsize=30, cut=3, clip=None,
                      color='beryl', shade=True, alpha=0.5, cmap='bone',
                      vmin=None, vmax=None, n_levels=10, clabel=False,
-                     clabel_kwargs=None, xlabel=None, ylabel=None,
-                     labelsize=14, random_state=None):
+                     clabel_kwargs=None, cbar=False, cbar_kwargs=None,
+                     xlabel=None, ylabel=None,
+                     labelsize=14, random_state=None, return_data = False):
     """
     Plot free energy of observable(s) in kilocalories per mole.
 
@@ -77,6 +78,10 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         Adds labels to contours in counter plot.
     clabel_kwargs : dict, optional
         Arguments to pass to matplotlib clabel.
+    cbar: bool, optional (default: False)
+        Adds a colorbar that maps the free energy colors
+    cbar_kwargs: dict, optional
+        Arguments to pass to matplotlib cbar
     xlabel : str, optional
         x-axis label
     ylabel : str, optional
@@ -87,15 +92,18 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         The generator used to initialize the centers. If an integer is
         given, it fixes the seed. Defaults to the global numpy random
         number generator
+    return_data : Boolean,optional
+        Whether or not to return the plotting data
 
     Returns
     -------
     ax : matplotlib axis
         matplotlib figure axis
-
+    return_data : list of lists, optional
+        data that can be used to remake the figures. The last list is always the free energy.
+        To remake 1 dim plot:plot(return_data[0],return_data[1]).
+        To remake 2 dim plots: contour(return_data[0],return_data[1],return_data[2])
     """
-
-    sns.set_style('whitegrid')
 
     if ax is None:
         ax = pp.gca()
@@ -114,6 +122,9 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         idx = random_state.choice(range(data.shape[0]), size=n_samples, p=pi)
         prune = prune[idx, :]
 
+    if return_data:
+        to_return = []
+
     if prune.shape[1] == 1:
 
         if clip is None:
@@ -125,8 +136,12 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
         ax.plot(X, Z - Z.min(), color=color)
 
-        ax.fill_between(X, Z - Z.min(), Z.max() - Z.min(),
-                        facecolor=color, alpha=alpha)
+        if shade:
+            ax.fill_between(X, Z - Z.min(), Z.max() - Z.min(),
+                            facecolor=color, alpha=alpha)
+        if return_data:
+            to_return.append(X)
+            to_return.append(Z)
 
     elif prune.shape[1] == 2:
 
@@ -141,14 +156,14 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         Z = _thermo_transform(Z, temperature)
 
         if not vmin:
-            vmin = np.percentile(Z, 0)
+            vmin = -1E-12
         if not vmax:
             vmax = np.percentile(Z, 50)
 
         if shade:
-            ax.contourf(X, Y, Z - Z.min(), cmap=pp.get_cmap(cmap),
-                        levels=np.linspace(vmin, vmax, n_levels), alpha=alpha,
-                        zorder=1, vmin=vmin, vmax=vmax)
+            cf = ax.contourf(X, Y, Z - Z.min(), cmap=pp.get_cmap(cmap),
+                             levels=np.linspace(vmin, vmax, n_levels), alpha=alpha,
+                             zorder=1, vmin=vmin, vmax=vmax)
         cs = ax.contour(X, Y, Z - Z.min(), cmap=pp.get_cmap('bone_r'),
                         levels=np.linspace(vmin, vmax, n_levels), alpha=1,
                         zorder=1, vmin=vmin, vmax=vmax)
@@ -159,8 +174,21 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
             ax.clabel(cs, **clabel_kwargs)
 
+        if cbar:
+            if not cbar_kwargs:
+                cbar_kwargs = {}
+            if shade:
+                mappable = cf
+            else:
+                mappable = cs
+            pp.colorbar(mappable, **cbar_kwargs)
+
         ax.grid(zorder=0)
 
+        if return_data:
+            to_return.append(X)
+            to_return.append(Y)
+            to_return.append(Z)
     else:
         raise ValueError('obs cannot be greater than size 2')
 
@@ -170,4 +198,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
     if ylabel:
         ax.set_ylabel(ylabel, size=labelsize)
 
-    return ax
+    if return_data:
+        return ax, to_return
+    else:
+        return ax

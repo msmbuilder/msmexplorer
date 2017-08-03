@@ -13,8 +13,6 @@ requirements:
   build:
     - python
     - setuptools
-    - cython
-    - numpy
 
   run:
     - python
@@ -22,13 +20,11 @@ requirements:
     - pandas
     - msmbuilder
     - mdtraj
-    - nglview
     - matplotlib
     - seaborn
     - statsmodels
     - networkx
     - corner
-    - six
 
 test:
 
@@ -40,10 +36,9 @@ test:
   imports:
     - msmexplorer
     - msmexplorer.tests
-    - matplotlib
 
   commands:
-    - nosetests -v msmexplorer --with-timer --with-coverage  --cover-package=msmexplorer
+    - MPLBACKEND="Agg" nosetests -v msmexplorer --with-timer --with-coverage  --cover-package=msmexplorer
 
 about:
   home: https://github.com/msmexplorer/msmexplorer

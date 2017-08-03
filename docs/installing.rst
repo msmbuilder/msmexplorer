@@ -14,7 +14,7 @@ It's also possible to install the released version using
 
 .. code:: bash
 
-  $ conda install msmexplorer
+  $ conda install -c omnia msmexplorer
 
 Alternatively, you can use ``pip`` to install the development version, with the
 command:
@@ -37,6 +37,8 @@ Dependencies
 
 Mandatory dependencies
 ^^^^^^^^^^^^^^^^^^^^^^
+
+The latest versions of the following packages are required:
 
 -  `numpy <http://www.numpy.org/>`__
 
@@ -72,6 +74,6 @@ Bugs
 Please report any bugs you encounter through the github `issue tracker
 <https://github.com/msmexplorer/msmexplorer/issues/new>`_. It will be most
 helpful to include a reproducible example. It is difficult debug any issues
-without knowing the versions of ``msmexplorer`` and ``matplotlib`` you are
-using, as well as what ``matplotlib`` backend you are using to draw the plots,
-so please include those in your bug report.
+without knowing the versions of ``msmexplorer``, ``seaborn``, and
+``matplotlib`` you are using, as well as what ``matplotlib`` backend you are
+using to draw the plots, so please include those in your bug report.

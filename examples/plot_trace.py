@@ -2,10 +2,10 @@
 Trace Plot
 ==========
 """
+from msmbuilder.example_datasets import FsPeptide
 from msmbuilder.featurizer import RMSDFeaturizer
 
 import msmexplorer as msme
-from msmexplorer.example_datasets import FsPeptide
 
 # Load Fs Peptide Data
 traj = FsPeptide().get().trajectories[0]

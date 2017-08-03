@@ -3,22 +3,42 @@
 Changelog
 =========
 
-
-v0.4.0 (Development)
---------------------
-
-
-API Changes
-~~~~~~~~~~~
-
+v1.1.0 (Development)
+-----------------------
 
 New Features
 ~~~~~~~~~~~~
+
+- Added a new function ``plot_stackdist`` that plots stacked distributions
+  (a.k.a joy plots) of data (#102).
+
+- Added a new function ``plot_implied_timescales`` that accepts a list of msm objects
+  calculated at different lag times. Returns an implied timescales plot (#90).
+
+- ``plot_free_energy`` now accepts a ``return_data`` flag that will return
+  the data used for the free energy plot(#78).
+
+Improvements
+~~~~~~~~~~~~
+
+- ``vmin`` in ``plot_free_energy`` is now set to ``1E-12`` unless otherwise specialized.
+
+v1.0.0 (March 30, 2017)
+-----------------------
+
+New Features
+~~~~~~~~~~~~
+
+- ``plot_free_energy`` now accepts two extra arguments, ``cbar`` and
+  ``cbar_kwargs`` to add a colorbar and control its aesthetics (#73).
 
 
 Improvements
 ~~~~~~~~~~~~
 
+- The ``shade`` option now works for ``plot_free_energy`` in the 1D case (#76).
+- Fixed an issue where adding cluster centers would break the visualization
+  if ``ndim`` > 2 (#70).
 
 v0.3.0 (October 24, 2016)
 -------------------------

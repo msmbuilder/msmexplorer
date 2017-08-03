@@ -2,20 +2,29 @@
 Chord Diagram
 =============
 """
+from msmbuilder.example_datasets import FsPeptide
+
 import numpy as np
+import mdtraj as md
 
 import msmexplorer as msme
 from msmexplorer.utils import make_colormap
 
+# # Load Fs Peptide Data
+trajs = FsPeptide().get().trajectories
 
-# Create a random square matrix
-rs = np.random.RandomState(42)
-n, p = 12, 12
-d = rs.normal(0, 2, (n, p))
-d += np.log(np.arange(1, p + 1)) * -5 + 10
+# Compute Hydrogen Bonding Residue Pairs
+baker_hubbard = md.baker_hubbard(trajs[0])
+top = trajs[0].topology
+pairs = [(top.atom(di).residue.index, top.atom(ai).residue.index)
+         for di, _, ai in baker_hubbard]
 
-# Make a colormap
+# Create Hydrogen Bonding Network
+hbonds = np.zeros((top.n_residues, top.n_residues))
+hbonds[list(zip(*pairs))] = 1.
+
+# Make a Colormap
 cmap = make_colormap(['rawdenim', 'lightgray', 'pomegranate'])
 
 # Plot Chord Diagram
-msme.plot_chord(d, cmap=cmap, threshold=.2)
+msme.plot_chord(hbonds, cmap=cmap)

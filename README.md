@@ -1,13 +1,13 @@
 MSMExplorer: data visualizations for biomolecular dynamics
 ==========================================================
 
-[![Build Status](https://travis-ci.org/msmexplorer/msmexplorer.svg?branch=master)] (https://travis-ci.org/msmexplorer/msmexplorer)
+[![Build Status](https://travis-ci.org/msmexplorer/msmexplorer.svg?branch=master)](https://travis-ci.org/msmexplorer/msmexplorer)
 [![Build status](https://ci.appveyor.com/api/projects/status/038hirce0vlx2847?svg=true)](https://ci.appveyor.com/project/cxhernandez/msmexplorer)
 [![Coverage Status](https://coveralls.io/repos/github/msmexplorer/msmexplorer/badge.svg?branch=master)](https://coveralls.io/github/msmexplorer/msmexplorer?branch=master)
 [![PyPI version](https://badge.fury.io/py/msmexplorer.svg)](http://badge.fury.io/py/msmexplorer)
-[![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat)]  (https://opensource.org/licenses/MIT)
-[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg?style=flat)] (http://msmbuilder.org/msmexplorer/)
-[![DOI](https://zenodo.org/badge/47228682.svg)](https://zenodo.org/badge/latestdoi/47228682)
+[![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://opensource.org/licenses/MIT)
+[![DOI](http://joss.theoj.org/papers/f9485c45a7bfc5cfce6edd8919a07739/status.svg)](http://joss.theoj.org/papers/f9485c45a7bfc5cfce6edd8919a07739)
+[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg?style=flat)](http://msmbuilder.org/msmexplorer/)
 
 
 <div class="row">
@@ -75,6 +75,8 @@ Dependencies
 
 ### Mandatory
 
+The latest versions of the following packages are required:
+
 -  [numpy](http://www.numpy.org/)
 
 -  [scipy](http://www.scipy.org/)
@@ -120,9 +122,18 @@ You may instead want to use the development version from Github, by running
 Development
 -----------
 
-https://github.com/msmexplorer/msmexplorer
+All development happens here, on
+[Github](https://github.com/msmexplorer/msmexplorer).
 
-Please [submit](https://github.com/msmexplorer/msmexplorer/issues/new) any bugs you encounter to the Github issue tracker.
+If you're interested in contributing to MSMExplorer, please refer to our
+[Contributing](http://msmbuilder.org/msmexplorer/development/contributing.html)
+guide.
+
+Support
+-------
+
+Please [submit](https://github.com/msmexplorer/msmexplorer/issues/new) any bugs
+or questions to the Github issue tracker.
 
 License
 -------
@@ -134,13 +145,16 @@ Citing
 ------
 
 ```bibtex
-@misc{msmexplorer,
-  author       = {Carlos X. Hernández  and
-                  Vijay S. Pande},
-  title        = {MSMExplorer},
-  month        = aug,
-  year         = 2016,
-  doi          = {10.5281/zenodo.154092},
-  url          = {http://dx.doi.org/10.5281/zenodo.154092}
+@article{msmexplorer,
+  doi = {10.21105/joss.00188},
+  url = {https://doi.org/10.21105%2Fjoss.00188},
+  year  = {2017},
+  month = {apr},
+  publisher = {The Open Journal},
+  volume = {2},
+  number = {12},
+  author = {Carlos X. Hern{\'{a}}ndez and Matthew P. Harrigan and Mohammad M. Sultan and Vijay S. Pande},
+  title = {{MSMExplorer}: Data Visualizations for Biomolecular Dynamics},
+  journal = {The Journal of Open Source Software}
 }
 ```

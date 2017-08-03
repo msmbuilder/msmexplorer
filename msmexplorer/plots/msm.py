@@ -6,7 +6,8 @@ from matplotlib import pyplot as pp
 from ..utils import msme_colors
 from ..palettes import msme_rgb
 
-__all__ = ['plot_pop_resids', 'plot_msm_network', 'plot_timescales']
+__all__ = ['plot_pop_resids', 'plot_msm_network',
+           'plot_timescales', 'plot_implied_timescales']
 
 
 @msme_colors
@@ -188,5 +189,83 @@ def plot_timescales(msm, n_timescales=None, error=None, sigma=2,
 
     for tick in ax.yaxis.get_major_ticks():
         tick.label.set_fontsize(16)
+
+    return ax
+
+
+@msme_colors
+def plot_implied_timescales(msm_list, n_timescales=None, show_error=True,
+                            color_palette=None, xlabel=None, ylabel=None, ax=None):
+    """
+    Plot implied timescales as a function of the MSM lag time
+
+    Parameters
+    ----------
+    msm_list: list of msmbuilder.msm.MarkovStateModel objects
+        A list of msm objects, calculated at different lag times
+    n_timescales: int, optional
+        Number of timescales to display. If None, all will be displayed.
+    show_error: bool, optional
+        Wether to display the uncertainty estimation of the timescales as a
+        shadowed region
+    color_palette: list or dict, optional
+        Color palette to apply
+    xlabel : str, optional
+        x-axis label
+    ylabel : str, optional
+        y-axis label
+    ax : matplotlib axis, optional (default: None)
+        Axis to plot on, otherwise uses current axis.
+
+    Returns
+    -------
+    ax : matplotlib axis
+        matplotlib figure axis
+
+    """
+    # Determine how many timescales to show in plot
+    if n_timescales is None:
+        n_timescales = len(msm_list[0].timescales_)
+    elif n_timescales > len(msm_list[0].timescales_):
+        n_timescales = len(msm_list[0].timescales_)
+
+    # Create axis object
+    if not ax:
+        _, ax = pp.subplots(1, 1)
+    if not color_palette:
+        color_palette = list(msme_rgb.values())
+
+    # y axis setup
+    long_ts = [msm.timescales_[0] for msm in msm_list]
+    short_ts = [msm.timescales_[-1] for msm in msm_list]
+    ymin = 10 ** np.floor(np.log10(np.nanmin(short_ts)))
+    ymax = 10 ** np.ceil(np.log10(np.nanmax(long_ts)))
+    ax.set_yscale('log')
+    ax.set_ylim([ymin, ymax])
+    if ylabel:
+        ax.yaxis.set_label_text(ylabel)
+
+    # x axis setup
+    lag_times = [msm.lag_time for msm in msm_list]
+    if (max(lag_times) / min(lag_times)) >= 1e3:
+        xmin = 10 ** np.floor(np.log10(np.nanmin(lag_times)))
+        xmax = 10 ** np.ceil(np.log10(np.nanmax(lag_times)))
+        ax.set_xscale('log')
+    else:
+        xmin, xmax = min(lag_times), max(lag_times)
+    ax.set_xlim([xmin, xmax])
+    if xlabel:
+        ax.xaxis.set_label_text(xlabel)
+
+    for ts in range(n_timescales):
+        timescales = [msm.timescales_[ts] for msm in msm_list]
+        color = color_palette[ts % len(color_palette)]
+        pp.scatter(x=lag_times, y=timescales, color=color)
+        if show_error:
+            errors = [msm.uncertainty_timescales()[ts] for msm in msm_list]
+            pp.fill_between(x=lag_times,
+                            y1=[ts - err for ts, err in zip(timescales, errors)],
+                            y2=[ts + err for ts, err in zip(timescales, errors)],
+                            color=color, alpha=0.5)
 
     return ax

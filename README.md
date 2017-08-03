@@ -20,8 +20,8 @@ MSMExplorer: data visualizations for biomolecular dynamics
   <a href="http://msmbuilder.org/msmexplorer/development/examples/plot_histogram.html">
       <img src="http://msmbuilder.org/msmexplorer/development/_static/plot_histogram_thumb.png" height="135" width="135">
   </a>
-  <a href="http://msmbuilder.org/msmexplorer/development/examples/plot_timescales.html">
-      <img src="http://msmbuilder.org/msmexplorer/development/_static/plot_timescales_thumb.png" height="135" width="135">
+  <a href="http://msmbuilder.org/msmexplorer/development/examples/plot_stackdist.html">
+      <img src="http://msmbuilder.org/msmexplorer/development/_static/plot_stackdist_thumb.png" height="135" width="135">
   </a>
   <a href="http://msmbuilder.org/msmexplorer/development/examples/plot_trace.html">
       <img src="http://msmbuilder.org/msmexplorer/development/_static/plot_trace_thumb.png" height="135" width="135">

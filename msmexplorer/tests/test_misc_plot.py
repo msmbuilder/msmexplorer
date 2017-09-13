@@ -41,8 +41,8 @@ class TestTimeSeriesPlot(PlotTestCase):
         assert isinstance(side_ax, SubplotBase)
 
     def test_plot_trace2d(self):
-        ax1 = plot_trace(ts2)
-        ax2 = test_plot_trace2d([ts2, ts2])
+        ax1 = plot_trace2d(ts2)
+        ax2 = plot_trace2d([ts2, ts2])
 
         assert isinstance(ax1, SubplotBase)
         assert isinstance(ax2, SubplotBase)

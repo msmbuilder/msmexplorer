@@ -11,7 +11,7 @@ import seaborn.apionly as sns
 from ..utils import msme_colors
 from .. import palettes
 
-__all__ = ['plot_chord', 'plot_stackdist', 'plot_trace']
+__all__ = ['plot_chord', 'plot_stackdist', 'plot_trace', 'plot_trace2d']
 
 
 def plot_chord(data, ax=None, cmap=None, labels=None, labelsize=12, norm=True,
@@ -303,3 +303,58 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
         side_ax.set_title('')
 
     return ax, side_ax
+
+
+@msme_colors
+def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
+                 ylabel=None, labelsize=14, cbar_kwargs=None, scatter_kwargs=None):
+    """
+    Plot a 2D trace of time-series data.
+
+    Parameters
+    ----------
+    data : array-like (nsamples, 2)
+        The samples. This should be a 2-D time-series array.
+    ts: float, optional (default: 1.0)
+        Step in units of time between each data point in data
+    cbar: bool, optional (default: True)
+        Adds a colorbar that maps the evolution of points in data
+    ax : matplotlib axis, optional
+        main matplotlib figure axis for trace.
+    xlabel : str, optional
+        x-axis label
+    ylabel : str, optional
+        y-axis label
+    labelsize : int, optional (default: 14)
+        Font side for axes labels.
+    cbar_kwargs: dict, optional
+        Arguments to pass to matplotlib cbar
+    scatter_kwargs: dict, optional
+        Arguments to pass to matplotlib scatter
+
+    Returns
+    -------
+    ax : matplotlib axis
+        main matplotlib figure axis for 2D trace.
+    """
+
+    if ax is None:
+        ax = pp.gca()
+    if scatter_kwargs is None:
+        scatter_kwargs = {}
+
+    c = ax.scatter(data[:, 0], data[:, 1],
+                   c=np.linspace(0, data.shape[0] * ts, data.shape[0]),
+                   **scatter_kwargs)
+
+    if cbar:
+        if not cbar_kwargs:
+            cbar_kwargs = {}
+        pp.colorbar(c, **cbar_kwargs)
+
+    if xlabel:
+        ax.set_xlabel(xlabel, size=labelsize)
+    if ylabel:
+        ax.set_ylabel(ylabel, size=labelsize)
+
+    return ax

@@ -19,7 +19,7 @@ New Features
   the data used for the free energy plot(#78).
 
 - Added a new function ``plot_trace2d`` that plots the time evolution of a 2D numpy array
-  using a colorbar to map the time.
+  using a colorbar to map the time (#108).
 
 Improvements
 ~~~~~~~~~~~~

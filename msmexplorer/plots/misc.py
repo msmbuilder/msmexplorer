@@ -307,7 +307,8 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
 
 @msme_colors
 def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
-                 ylabel=None, labelsize=14, cbar_kwargs=None, scatter_kwargs=None):
+                 ylabel=None, labelsize=14,
+                 cbar_kwargs=None, scatter_kwargs=None, plot_kwargs=None):
     """
     Plot a 2D trace of time-series data.
 
@@ -348,6 +349,8 @@ def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
         ax = pp.gca()
     if scatter_kwargs is None:
         scatter_kwargs = {}
+    if plot_kwargs is None:
+        plot_kwargs = {}
 
     if isinstance(data, list):
         cbar = False

@@ -357,6 +357,8 @@ def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
         for item in data:
             ax.plot(item[:, 0], item[:, 1], **plot_kwargs)
     else:
+        if len(data.shape) != 2:
+            raise ValueError('Data must be a 2d array.')
         c = ax.scatter(data[:, 0], data[:, 1],
                        c=np.linspace(0, data.shape[0] * ts, data.shape[0]),
                        **scatter_kwargs)

@@ -313,8 +313,13 @@ def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
 
     Parameters
     ----------
-    data : array-like (nsamples, 2)
-        The samples. This should be a 2-D time-series array.
+    data : array-like (nsamples, 2) or list thereof
+        The samples. This should be a single 2-D time-series array or a list of 2-D
+        time-series arrays.
+        If it is a single 2D np.array, the elements will be scatter plotted and
+        color mapped to their values.
+        If it is a list of 2D np.arrays, each will be plotted with a single color on
+        the same axis.
     ts: float, optional (default: 1.0)
         Step in units of time between each data point in data
     cbar: bool, optional (default: True)
@@ -331,7 +336,8 @@ def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
         Arguments to pass to matplotlib cbar
     scatter_kwargs: dict, optional
         Arguments to pass to matplotlib scatter
-
+    plot_kwargs: dict, optional
+        Arguments to pass to matplotlib plot
     Returns
     -------
     ax : matplotlib axis
@@ -343,9 +349,14 @@ def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
     if scatter_kwargs is None:
         scatter_kwargs = {}
 
-    c = ax.scatter(data[:, 0], data[:, 1],
-                   c=np.linspace(0, data.shape[0] * ts, data.shape[0]),
-                   **scatter_kwargs)
+    if isinstance(data, list):
+        cbar = False
+        for item in data:
+            ax.plot(item[:, 0], item[:, 1], **plot_kwargs)
+    else:
+        c = ax.scatter(data[:, 0], data[:, 1],
+                       c=np.linspace(0, data.shape[0] * ts, data.shape[0]),
+                       **scatter_kwargs)
 
     if cbar:
         if not cbar_kwargs:

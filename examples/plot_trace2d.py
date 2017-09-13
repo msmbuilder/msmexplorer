@@ -7,7 +7,7 @@ from msmbuilder.featurizer import DihedralFeaturizer
 from msmbuilder.decomposition import tICA
 from msmbuilder.cluster import MiniBatchKMeans
 from msmbuilder.msm import MarkovStateModel
-
+from matplotlib import pyplot as pp
 import numpy as np
 
 import msmexplorer as msme
@@ -44,3 +44,7 @@ msme.plot_trace2d(
                  'orientation': 'horizontal'},
     xlabel='tIC 1', ylabel='tIC 2'
 )
+
+# Finally, let's plot every trajectory to see the region that each one is covering
+f, ax = pp.subplots()
+msme.plot_trace2d(tica_trajs, ax)

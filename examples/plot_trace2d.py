@@ -44,7 +44,6 @@ msme.plot_trace2d(
                  'orientation': 'horizontal'},
     xlabel='tIC 1', ylabel='tIC 2'
 )
-
 # Finally, let's plot every trajectory to see the region that each one is covering
 f, ax = pp.subplots()
-msme.plot_trace2d(tica_trajs, ax)
+msme.plot_trace2d(tica_trajs, ax=ax, xlabel='tIC 1', ylabel='tIC 2')pp.show()

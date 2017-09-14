@@ -364,7 +364,7 @@ def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
                        **scatter_kwargs)
 
     if cbar:
-        if not cbar_kwargs:
+        if cbar_kwargs is None:
             cbar_kwargs = {}
         pp.colorbar(c, **cbar_kwargs)
 

@@ -306,7 +306,7 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
 
 
 @msme_colors
-def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
+def plot_trace2d(data, obs=(0, 1), ts=1.0, cbar=True, ax=None, xlabel=None,
                  ylabel=None, labelsize=14,
                  cbar_kwargs=None, scatter_kwargs=None, plot_kwargs=None):
     """
@@ -321,6 +321,8 @@ def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
         color mapped to their values.
         If it is a list of 2D np.arrays, each will be plotted with a single color on
         the same axis.
+    obs: tuple, optional (default: (0,1))
+        Observables to plot.
     ts: float, optional (default: 1.0)
         Step in units of time between each data point in data
     cbar: bool, optional (default: True)
@@ -352,21 +354,25 @@ def plot_trace2d(data, ts=1.0, cbar=True, ax=None, xlabel=None,
     if plot_kwargs is None:
         plot_kwargs = {}
 
+    if not isinstance(obs, tuple):
+        raise ValueError('obs must be a tuple')
+
     if isinstance(data, list):
-        cbar = False
+        # Plot each item in the list with a single color and join with lines
         for item in data:
-            ax.plot(item[:, 0], item[:, 1], **plot_kwargs)
+            prune = item[:, obs]
+            ax.plot(prune[:, 0], prune[:, 1], **plot_kwargs)
     else:
-        if len(data.shape) != 2:
-            raise ValueError('Data must be a 2d array.')
-        c = ax.scatter(data[:, 0], data[:, 1],
+        # A single array of data is passed, so we scatter plot
+        prune = data[:, obs]
+        c = ax.scatter(prune[:, 0], prune[:, 1],
                        c=np.linspace(0, data.shape[0] * ts, data.shape[0]),
                        **scatter_kwargs)
-
-    if cbar:
-        if cbar_kwargs is None:
-            cbar_kwargs = {}
-        pp.colorbar(c, **cbar_kwargs)
+        if cbar:
+            # Map the time evolution between the data points to a colorbar
+            if cbar_kwargs is None:
+                cbar_kwargs = {}
+            pp.colorbar(c, **cbar_kwargs)
 
     if xlabel:
         ax.set_xlabel(xlabel, size=labelsize)

@@ -36,14 +36,15 @@ ax = msme.plot_free_energy(
     cbar=True,
     cbar_kwargs={'format': '%.1f', 'label': 'Free energy (kcal/mol)'}
 )
-# Now plot the first single trajectory on top of it to inspect it's movement
+# Now plot the first trajectory on top of it to inspect it's movement
 msme.plot_trace2d(
-    data=tica_trajs[0], ts=.2, ax=ax,
+    data=tica_trajs[0], ts=0.2, ax=ax,
     scatter_kwargs={'s': 2},
-    cbar_kwargs={'format': '%.1f', 'label': 'Time (ns)',
+    cbar_kwargs={'format': '%d', 'label': 'Time (ns)',
                  'orientation': 'horizontal'},
     xlabel='tIC 1', ylabel='tIC 2'
 )
-# Finally, let's plot every trajectory to see the region that each one is covering
+# Finally, let's plot every trajectory to see the individual sampled regions
 f, ax = pp.subplots()
-msme.plot_trace2d(tica_trajs, ax=ax, xlabel='tIC 1', ylabel='tIC 2')pp.show()
+msme.plot_trace2d(tica_trajs, ax=ax, xlabel='tIC 1', ylabel='tIC 2')
+pp.show()

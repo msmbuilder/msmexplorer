@@ -23,6 +23,9 @@ Improvements
 
 - ``vmin`` in ``plot_free_energy`` is now set to ``1E-12`` unless otherwise specialized.
 
+- Add ``plot_implied_timescales`` example to the ``Fs-Peptide-Example.ipynb`` notebook. Also added some minor
+  clarifications and explanations (#107).
+
 v1.0.0 (March 30, 2017)
 -----------------------
 

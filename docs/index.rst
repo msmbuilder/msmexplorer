@@ -53,6 +53,23 @@ To get started with MSMExplorer, please refer to the
 with MSMExplorer and then check out the :ref:`notebooks <notebooks>` and
 :ref:`API reference <api_ref>` to find out how.
 
+To cite MSMExplorer, please use the following reference:
+
+.. code:: bibtex
+
+  @article{msmexplorer,
+    doi = {10.21105/joss.00188},
+    url = {https://doi.org/10.21105%2Fjoss.00188},
+    year  = {2017},
+    month = {apr},
+    publisher = {The Open Journal},
+    volume = {2},
+    number = {12},
+    author = {Carlos X. Hern{\'{a}}ndez and Matthew P. Harrigan and Mohammad M. Sultan and Vijay S. Pande},
+    title = {{MSMExplorer}: Data Visualizations for Biomolecular Dynamics},
+    journal = {The Journal of Open Source Software}
+  }
+
 To see the code or report a bug, please visit the `github repository
 <https://github.com/msmexplorer/msmexplorer>`_.
 

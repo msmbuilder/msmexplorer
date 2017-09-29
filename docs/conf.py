@@ -296,3 +296,28 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 # texinfo_no_detailmenu = False
+
+
+# Render publications
+def render_publications():
+    from jinja2 import FileSystemLoader, Environment
+    sys.path.append('.')
+    import bibparse
+
+    env = Environment(loader=FileSystemLoader('.'))
+    template = env.get_template('papers_templ.rst')
+
+    with open('papers.bib') as f:
+        bib = f.read()
+
+    if len(bib) == 0:
+        return False
+
+    pubs = bibparse.entries.parseString(bib)
+    # Reverse chronological order
+    pubs = sorted(pubs, key=lambda x: -int(x.fields['year']))
+
+    with open('papers.rst', 'w') as f:
+        f.write(template.render(publications=pubs))
+    return True
+render_publications()

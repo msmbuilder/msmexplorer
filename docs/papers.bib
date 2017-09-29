@@ -21,3 +21,15 @@
   journal = {Journal of Chemical Theory and Computation},
   abstract = {Metadynamics is a powerful enhanced molecular dynamics sampling method that accelerates simulations by adding history-dependent multidimensional Gaussians along selective collective variables (CVs). In practice, choosing a small number of slow CVs remains challenging due to the inherent high dimensionality of biophysical systems. Here we show that time-structure based independent component analysis (tICA), a recent advance in Markov state model literature, can be used to identify a set of variationally optimal slow coordinates for use as CVs for Metadynamics. We show that linear and nonlinear tICA-Metadynamics can complement existing MD studies by explicitly sampling the system’s slowest modes and can even drive transitions along the slowest modes even when no such transitions are observed in unbiased simulations.}
 }
+
+@article{Sultan2017,
+  doi = {10.1021/acs.jpcb.7b06896},
+  url = {https://doi.org/10.1021/acs.jpcb.7b06896},
+  year  = {2017},
+  month = {sep},
+  publisher = {American Chemical Society ({ACS})},
+  author = {Mohammad Muneeb Sultan and Vijay S. Pande},
+  title = {Transfer Learning from Markov Models Leads to Efficient Sampling of Related Systems},
+  journal = {The Journal of Physical Chemistry B},
+  abstract = {We recently showed that the time-structure based independent component analysis method from Markov state model literature provided a set of variationally optimal slow collective variables for Metadynamics (tICA-Metadynamics). In this paper, we extend the methodology towards efficient sampling of related mutants by borrowing ideas from transfer learning methods in machine learning. Our method explicitly assumes that a similar set of slow modes and metastable states are found in both the wild type (base line) and its mutants. Under this assumption, we describe a few simple techniques using sequence mapping for transferring the slow modes and structural information contained in the wild type simulation to a mutant model for performing enhanced sampling. The resulting simulations can then be reweighted onto the full-phase space using Multi-state Bennett Acceptance Ratio, allowing for thermodynamic comparison against the wild type. We first benchmark our methodology by re-capturing alanine dipeptide dynamics across a range of different atomistic force fields, including the polarizable Amoeba force field, after learning a set of slow modes using Amber ff99sb-ILDN. We next extend the method by including structural data from the wild type simulation and apply the technique to recapturing the affects of the GTT mutation on the FIP35 WW domain.}
+}

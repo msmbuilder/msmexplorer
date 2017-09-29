@@ -2,12 +2,13 @@ import numpy as np
 from matplotlib.axes import SubplotBase
 from seaborn.apionly import FacetGrid
 
-from ..plots import plot_chord, plot_stackdist, plot_trace
+from ..plots import plot_chord, plot_stackdist, plot_trace, plot_trace2d
 from . import PlotTestCase
 
 rs = np.random.RandomState(42)
 data = rs.rand(12, 12)
 ts = rs.rand(100000, 1)
+ts2 = rs.rand(100000, 2)
 
 
 class TestChordPlot(PlotTestCase):
@@ -38,3 +39,10 @@ class TestTimeSeriesPlot(PlotTestCase):
 
         assert isinstance(ax, SubplotBase)
         assert isinstance(side_ax, SubplotBase)
+
+    def test_plot_trace2d(self):
+        ax1 = plot_trace2d(ts2)
+        ax2 = plot_trace2d([ts2, ts2])
+
+        assert isinstance(ax1, SubplotBase)
+        assert isinstance(ax2, SubplotBase)

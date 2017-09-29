@@ -11,7 +11,7 @@ import seaborn.apionly as sns
 from ..utils import msme_colors
 from .. import palettes
 
-__all__ = ['plot_chord', 'plot_stackdist', 'plot_trace']
+__all__ = ['plot_chord', 'plot_stackdist', 'plot_trace', 'plot_trace2d']
 
 
 def plot_chord(data, ax=None, cmap=None, labels=None, labelsize=12, norm=True,
@@ -303,3 +303,80 @@ def plot_trace(data, label=None, window=1, ax=None, side_ax=None,
         side_ax.set_title('')
 
     return ax, side_ax
+
+
+@msme_colors
+def plot_trace2d(data, obs=(0, 1), ts=1.0, cbar=True, ax=None, xlabel=None,
+                 ylabel=None, labelsize=14,
+                 cbar_kwargs=None, scatter_kwargs=None, plot_kwargs=None):
+    """
+    Plot a 2D trace of time-series data.
+
+    Parameters
+    ----------
+    data : array-like (nsamples, 2) or list thereof
+        The samples. This should be a single 2-D time-series array or a list of 2-D
+        time-series arrays.
+        If it is a single 2D np.array, the elements will be scatter plotted and
+        color mapped to their values.
+        If it is a list of 2D np.arrays, each will be plotted with a single color on
+        the same axis.
+    obs: tuple, optional (default: (0,1))
+        Observables to plot.
+    ts: float, optional (default: 1.0)
+        Step in units of time between each data point in data
+    cbar: bool, optional (default: True)
+        Adds a colorbar that maps the evolution of points in data
+    ax : matplotlib axis, optional
+        main matplotlib figure axis for trace.
+    xlabel : str, optional
+        x-axis label
+    ylabel : str, optional
+        y-axis label
+    labelsize : int, optional (default: 14)
+        Font side for axes labels.
+    cbar_kwargs: dict, optional
+        Arguments to pass to matplotlib cbar
+    scatter_kwargs: dict, optional
+        Arguments to pass to matplotlib scatter
+    plot_kwargs: dict, optional
+        Arguments to pass to matplotlib plot
+    Returns
+    -------
+    ax : matplotlib axis
+        main matplotlib figure axis for 2D trace.
+    """
+
+    if ax is None:
+        ax = pp.gca()
+    if scatter_kwargs is None:
+        scatter_kwargs = {}
+    if plot_kwargs is None:
+        plot_kwargs = {}
+
+    if not isinstance(obs, tuple):
+        raise ValueError('obs must be a tuple')
+
+    if isinstance(data, list):
+        # Plot each item in the list with a single color and join with lines
+        for item in data:
+            prune = item[:, obs]
+            ax.plot(prune[:, 0], prune[:, 1], **plot_kwargs)
+    else:
+        # A single array of data is passed, so we scatter plot
+        prune = data[:, obs]
+        c = ax.scatter(prune[:, 0], prune[:, 1],
+                       c=np.linspace(0, data.shape[0] * ts, data.shape[0]),
+                       **scatter_kwargs)
+        if cbar:
+            # Map the time evolution between the data points to a colorbar
+            if cbar_kwargs is None:
+                cbar_kwargs = {}
+            pp.colorbar(c, **cbar_kwargs)
+
+    if xlabel:
+        ax.set_xlabel(xlabel, size=labelsize)
+    if ylabel:
+        ax.set_ylabel(ylabel, size=labelsize)
+
+    return ax

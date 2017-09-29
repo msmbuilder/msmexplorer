@@ -30,7 +30,7 @@ before_script:
 
 script:
 - conda build --quiet devtools/conda-recipe
-  && devtools/travis-ci/build_docs.sh
+- if [ "$CONDA_PY" = "3.5" ]; then devtools/travis-ci/build_docs.sh; fi
 
 after_success:
 - cp $HOME/miniconda3/conda-bld/test-tmp_dir/.coverage .
@@ -44,7 +44,7 @@ deploy:
     local-dir: docs/_deploy/
     on:
       branch: master
-      condition: "$CONDA_PY = 3.5"
+      condition: "$CONDA_PY = 3.6"
     region: us-east-1
     detect_encoding: true
     access_key_id: $AWS_ACCESS_KEY

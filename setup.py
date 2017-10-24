@@ -64,7 +64,7 @@ def main(**kwargs):
         author_email="cxh@stanford.edu",
         url='https://github.com/cxhernandez/%s' % NAME,
         download_url='https://github.com/cxhernandez/%s/tarball/master' % NAME,
-        license='LGPLv2+',
+        license='MIT',
         packages=find_packages(),
         include_package_data=True,
         package_data={

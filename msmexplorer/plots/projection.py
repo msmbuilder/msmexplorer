@@ -202,3 +202,28 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         return ax, to_return
     else:
         return ax
+
+
+@msme_colors
+def plot_decomp_grid(decomposition, res=50, alpha=1., cmap='magma', ylim=None,
+                     xlim=None, ax=None):
+
+    if ax is None:
+        ax = pp.gca()
+    else:
+        if xlim is None:
+            xlim = ax.get_xlim()
+        if ylim is None:
+            ylim = ax.get_ylim()
+
+    X, Y = np.meshgrid(np.linspace(xlim[0], xlim[1], res),
+                       np.linspace(ylim[0], ylim[1], res))
+    x = np.ravel(X)
+    y = np.ravel(Y)
+    xy = np.vstack([x, y]).T
+
+    val = np.vstack(decomposition.transform([xy]))
+    ax.scatter(xy[:, 0], xy[:, 1], c=val, s=50, cmap='magma', alpha=alpha,
+               edgecolor='')
+
+    return ax

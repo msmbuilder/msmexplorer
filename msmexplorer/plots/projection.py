@@ -27,7 +27,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                      vmin=None, vmax=None, n_levels=10, clabel=False,
                      clabel_kwargs=None, cbar=False, cbar_kwargs=None,
                      xlabel=None, ylabel=None,
-                     labelsize=14, random_state=None, return_data = False):
+                     labelsize=14, random_state=None, return_data=False):
     """
     Plot free energy of observable(s) in kilocalories per mole.
 

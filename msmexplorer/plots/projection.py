@@ -162,8 +162,8 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
         if shade:
             cf = ax.contourf(X, Y, Z - Z.min(), cmap=pp.get_cmap(cmap),
-                             levels=np.linspace(vmin, vmax, n_levels), alpha=alpha,
-                             zorder=1, vmin=vmin, vmax=vmax)
+                             levels=np.linspace(vmin, vmax, n_levels),
+                             alpha=alpha, zorder=1, vmin=vmin, vmax=vmax)
         cs = ax.contour(X, Y, Z - Z.min(), cmap=pp.get_cmap('bone_r'),
                         levels=np.linspace(vmin, vmax, n_levels), alpha=1,
                         zorder=1, vmin=vmin, vmax=vmax)
@@ -206,7 +206,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
 @msme_colors
 def plot_decomp_grid(decomposition, res=50, alpha=1., cmap='magma', ylim=None,
-                     xlim=None, ax=None):
+                     obs=0, xlim=None, ax=None, n_levels=3):
 
     if ax is None:
         ax = pp.gca()
@@ -216,14 +216,18 @@ def plot_decomp_grid(decomposition, res=50, alpha=1., cmap='magma', ylim=None,
         if ylim is None:
             ylim = ax.get_ylim()
 
+    if not xlim and not ylim:
+        raise ValueError('Please supply x and y limits.')
+
     X, Y = np.meshgrid(np.linspace(xlim[0], xlim[1], res),
                        np.linspace(ylim[0], ylim[1], res))
     x = np.ravel(X)
     y = np.ravel(Y)
     xy = np.vstack([x, y]).T
 
-    val = np.vstack(decomposition.transform([xy]))
-    ax.scatter(xy[:, 0], xy[:, 1], c=val, s=50, cmap='magma', alpha=alpha,
-               edgecolor='')
+    Z = np.vstack(decomposition.transform([xy]))[:, obs].reshape(res, res)
 
+    levels = np.linspace(Z.min(), Z.max(), n_levels + 1)
+
+    ax.contourf(X, Y, Z, cmap=cmap, alpha=alpha, levels=levels)
     return ax

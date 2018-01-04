@@ -229,5 +229,9 @@ def plot_decomp_grid(decomposition, res=50, alpha=1., cmap='magma', ylim=None,
 
     levels = np.linspace(Z.min(), Z.max(), n_levels + 1)
 
-    ax.contourf(X, Y, Z, cmap=cmap, alpha=alpha, levels=levels)
+    cnt = ax.contourf(X, Y, Z, cmap=cmap, alpha=alpha, levels=levels)
+
+    for c in cnt.collections:
+        c.set_edgecolor("face")
+
     return ax

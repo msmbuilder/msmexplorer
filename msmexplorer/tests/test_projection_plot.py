@@ -34,7 +34,7 @@ class TestProjectionPlot(PlotTestCase):
     def test_plot_decomp_grid(self):
         from msmbuilder.decomposition import tICA
 
-        tica = tICA(n_components=2).fit([data], xlim=(0., 1.), ylim=(0., 1.))
-        ax = plot_decomp_grid(tica)
+        tica = tICA(n_components=2).fit([data])
+        ax = plot_decomp_grid(tica, xlim=(0., 1.), ylim=(0., 1.))
 
         assert isinstance(ax, SubplotBase)

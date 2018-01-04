@@ -3,7 +3,6 @@ from scipy.constants import Avogadro, Boltzmann, calorie_th
 from matplotlib import pyplot as pp
 
 from corner import corner
-import seaborn as sns
 from seaborn.distributions import (_scipy_univariate_kde, _scipy_bivariate_kde)
 
 from ..utils import msme_colors
@@ -204,7 +203,6 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         return ax
 
 
-@msme_colors
 def plot_decomp_grid(decomposition, obs=0, n_levels=10, res=50, alpha=1.,
                      cmap='magma', ylim=None, xlim=None, ax=None):
     """

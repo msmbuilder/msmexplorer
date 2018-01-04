@@ -223,9 +223,9 @@ def plot_decomp_grid(decomposition, obs=0, n_levels=10, res=50, alpha=1.,
     cmap : str or matplotlib colormap, optional (default: 'magma')
         Colormap to use in the filled contour plot.
     xlim : tuple, optional
-        Horizontal axis limits for plotting.
+        Horizontal axis limits for plotting. Not needed if `ax` is supplied.
     ylim : tuple, optional
-        Vertical axis limits for plotting.
+        Vertical axis limits for plotting. Not needed if `ax` is supplied.
     ax : matplotlib axis, optional
         matplotlib figure axis
 

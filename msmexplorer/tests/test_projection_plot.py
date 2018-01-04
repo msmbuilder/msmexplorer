@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib.figure import Figure
 from matplotlib.axes import SubplotBase
 
-from ..plots import plot_histogram, plot_free_energy
+from ..plots import plot_histogram, plot_free_energy, plot_decomp_grid
 from . import PlotTestCase
 
 n = 100000
@@ -28,5 +28,13 @@ class TestProjectionPlot(PlotTestCase):
         ax = plot_free_energy(data, obs=(0, 1), n_samples=10000,
                               pi=np.array(n*[.5]), xlabel='x', ylabel='y',
                               clabel=True)
+
+        assert isinstance(ax, SubplotBase)
+
+    def test_plot_decomp_grid(self):
+        from msmbuilder.decomposition import tICA
+
+        tica = tICA(n_components=2).fit([data])
+        ax = plot_decomp_grid(tica)
 
         assert isinstance(ax, SubplotBase)

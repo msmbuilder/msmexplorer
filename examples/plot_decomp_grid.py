@@ -29,7 +29,7 @@ msm = MarkovStateModel(lag_time=2)
 assignments = msm.fit_transform(clustered_trajs)
 
 # Plot Free Energy
-data = np.concatenate(tica_trajs, axis=0)
+data = np.concatenate(trajs, axis=0)
 pi_0 = msm.populations_[np.concatenate(assignments, axis=0)]
 ax = msme.plot_free_energy(data, obs=(0, 1), n_samples=100000, pi=pi_0,
                            random_state=rs)

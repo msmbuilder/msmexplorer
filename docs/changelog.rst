@@ -3,7 +3,7 @@
 Changelog
 =========
 
-v1.1.0 (Development)
+v1.1.0 (January 5, 2018)
 -----------------------
 
 New Features

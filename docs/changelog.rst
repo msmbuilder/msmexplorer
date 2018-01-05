@@ -21,6 +21,9 @@ New Features
 - Added a new function ``plot_trace2d`` that plots the time evolution of a 2D numpy array
   using a colorbar to map the time (#108).
 
+- Added a new function ``plot_decomp_grid`` that projects a 1D decomposition
+onto a 2D grid (#115).
+
 Improvements
 ~~~~~~~~~~~~
 

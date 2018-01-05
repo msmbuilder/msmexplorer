@@ -3,12 +3,11 @@ from scipy.constants import Avogadro, Boltzmann, calorie_th
 from matplotlib import pyplot as pp
 
 from corner import corner
-import seaborn as sns
 from seaborn.distributions import (_scipy_univariate_kde, _scipy_bivariate_kde)
 
 from ..utils import msme_colors
 
-__all__ = ['plot_histogram', 'plot_free_energy']
+__all__ = ['plot_histogram', 'plot_free_energy', 'plot_decomp_grid']
 
 THERMO_CONSTANT = 10**-3 * Boltzmann * Avogadro / calorie_th
 
@@ -27,7 +26,7 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
                      vmin=None, vmax=None, n_levels=10, clabel=False,
                      clabel_kwargs=None, cbar=False, cbar_kwargs=None,
                      xlabel=None, ylabel=None,
-                     labelsize=14, random_state=None, return_data = False):
+                     labelsize=14, random_state=None, return_data=False):
     """
     Plot free energy of observable(s) in kilocalories per mole.
 
@@ -162,8 +161,8 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
 
         if shade:
             cf = ax.contourf(X, Y, Z - Z.min(), cmap=pp.get_cmap(cmap),
-                             levels=np.linspace(vmin, vmax, n_levels), alpha=alpha,
-                             zorder=1, vmin=vmin, vmax=vmax)
+                             levels=np.linspace(vmin, vmax, n_levels),
+                             alpha=alpha, zorder=1, vmin=vmin, vmax=vmax)
         cs = ax.contour(X, Y, Z - Z.min(), cmap=pp.get_cmap('bone_r'),
                         levels=np.linspace(vmin, vmax, n_levels), alpha=1,
                         zorder=1, vmin=vmin, vmax=vmax)
@@ -202,3 +201,63 @@ def plot_free_energy(data, ax=None, obs=0, temperature=300., n_samples=None,
         return ax, to_return
     else:
         return ax
+
+
+def plot_decomp_grid(decomposition, obs=0, n_levels=10, res=50, alpha=1.,
+                     cmap='magma', ylim=None, xlim=None, ax=None):
+    """
+    Plot a filled 2-D contour plot of a dimensionality reduction.
+
+    Parameters
+    ----------
+    decomposition : msmbuilder.decomposition object
+        Decomposition object to visualize.
+    obs : int or tuple, optional (default: 0)
+        Decomposition dimension to plot.
+    n_levels : int, optional (default: 10)
+        Number of contour levels to include.
+    obs : int or tuple, optional (default: 0)
+        Observables to plot.
+    alpha : float, optional  (default: 1.)
+        Opacity of shaded area.
+    cmap : str or matplotlib colormap, optional (default: 'magma')
+        Colormap to use in the filled contour plot.
+    xlim : tuple, optional
+        Horizontal axis limits for plotting. Not needed if `ax` is supplied.
+    ylim : tuple, optional
+        Vertical axis limits for plotting. Not needed if `ax` is supplied.
+    ax : matplotlib axis, optional
+        matplotlib figure axis
+
+    Returns
+    -------
+    ax : matplotlib axis
+        matplotlib figure axis
+    """
+    if ax is None:
+        ax = pp.gca()
+    else:
+        if xlim is None:
+            xlim = ax.get_xlim()
+        if ylim is None:
+            ylim = ax.get_ylim()
+
+    if not xlim and not ylim:
+        raise ValueError('Please supply x and y limits.')
+
+    X, Y = np.meshgrid(np.linspace(xlim[0], xlim[1], res),
+                       np.linspace(ylim[0], ylim[1], res))
+    x = np.ravel(X)
+    y = np.ravel(Y)
+    xy = np.vstack([x, y]).T
+
+    Z = np.vstack(decomposition.transform([xy]))[:, obs].reshape(res, res)
+
+    levels = np.linspace(Z.min(), Z.max(), n_levels + 1)
+
+    cnt = ax.contourf(X, Y, Z, cmap=cmap, alpha=alpha, levels=levels)
+
+    for c in cnt.collections:
+        c.set_edgecolor("face")
+
+    return ax

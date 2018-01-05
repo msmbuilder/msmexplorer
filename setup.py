@@ -17,8 +17,8 @@ finally:
     sys.dont_write_bytecode = False
 
 NAME = "msmexplorer"
-VERSION = "1.1.0dev0"
-ISRELEASED = False
+VERSION = "1.1.0"
+ISRELEASED = True
 __version__ = VERSION
 
 

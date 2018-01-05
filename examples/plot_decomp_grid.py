@@ -1,5 +1,5 @@
 """
-Free Energy Plot (Bivariate)
+2-D Decomposition Grid Plot
 ============================
 """
 from msmbuilder.example_datasets import MullerPotential
@@ -35,4 +35,4 @@ ax = msme.plot_free_energy(data, obs=(0, 1), n_samples=100000, pi=pi_0,
                            random_state=rs)
 
 # Plot tICA Projection
-msme.plot_decomp_grid(tica_model, ax=ax)
+msme.plot_decomp_grid(tica_model, ax=ax, alpha=0.6)

@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib.axes import SubplotBase
 from seaborn.apionly import FacetGrid
 
-from ..plots import plot_chord, plot_stackdist, plot_trace, plot_trace2d
+from ..plots import plot_chord, plot_stackdist, plot_trace, plot_trace2d, plot_angle
 from . import PlotTestCase
 
 rs = np.random.RandomState(42)
@@ -46,3 +46,11 @@ class TestTimeSeriesPlot(PlotTestCase):
 
         assert isinstance(ax1, SubplotBase)
         assert isinstance(ax2, SubplotBase)
+
+class TestAnglePlot(PlotTestCase):
+    """Test the function(s) that visualize angle distributions"""
+
+    def test_plot_angle(self):
+        f, (left_ax, right_ax) = plot_angle(ts)
+        assert isinstance(left_ax, SubplotBase)
+        assert isinstance(right_ax, SubplotBase)

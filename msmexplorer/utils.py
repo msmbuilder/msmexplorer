@@ -132,3 +132,19 @@ def hex2rgb(color):
 
     h = color.lstrip('#')
     return tuple(int(h[i:i+2], 16)/255. for i in (0, 2, 4))
+
+
+def wrap_angle(x):
+    """Wraps an angle in degrees between -180 and 180 degrees"""
+    x = (x + 180) % 360
+    if x < 0:
+        x += 360
+    return x - 180
+
+
+def constrain_angle(x):
+    """Constrains an angle in degrees between 0 and 360 degrees"""
+    x = x % 360
+    if x < 0:
+        x += 360
+    return x

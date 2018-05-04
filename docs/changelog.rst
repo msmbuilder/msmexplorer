@@ -21,6 +21,9 @@ v1.1.0 (January 5, 2018)
 New Features
 ~~~~~~~~~~~~
 
+- Added a new function ``plot_angles`` that plots the distribution of an angle in polar coordinates and
+  a regular distribution plot (#119).
+
 - Added a new function ``plot_stackdist`` that plots stacked distributions
   (a.k.a joy plots) of data (#102).
 

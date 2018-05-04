@@ -9,7 +9,10 @@ from __future__ import print_function
 import os
 import shutil
 
-from sphinx.util.compat import Directive
+try:
+    from sphinx.util.compat import Directive
+except ImportError:
+    from docutils.parsers.rst import Directive
 from docutils import nodes
 from docutils.parsers.rst import directives
 import nbformat

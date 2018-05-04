@@ -4,14 +4,15 @@ import pandas as pd
 from matplotlib import pyplot as pp
 from matplotlib.path import Path
 from matplotlib.colors import Normalize
+import matplotlib.gridspec as gridspec
 import matplotlib.patches as patches
 
 import seaborn.apionly as sns
 
-from ..utils import msme_colors
+from ..utils import msme_colors, wrapAngle, constrainAngle
 from .. import palettes
 
-__all__ = ['plot_chord', 'plot_stackdist', 'plot_trace', 'plot_trace2d']
+__all__ = ['plot_chord', 'plot_stackdist', 'plot_trace', 'plot_trace2d', 'plot_angle']
 
 
 def plot_chord(data, ax=None, cmap=None, labels=None, labelsize=12, norm=True,
@@ -380,3 +381,81 @@ def plot_trace2d(data, obs=(0, 1), ts=1.0, cbar=True, ax=None, xlabel=None,
         ax.set_ylabel(ylabel, size=labelsize)
 
     return ax
+
+
+def plot_angle(data, N=50, title=None, ax1=None, ax2=None, color=None, wrap=True):
+    """
+    Plot the distrubution of an angle in polar coordinates and a standard histogram / KDE plot.
+
+    Parameters
+    ----------
+    data: array-like (nsamples,)
+    N: int, optional (default: 50)
+        Number of bins to use for histogramming the data
+    title: str, optional (default: None)
+        The title of the plot
+    ax1: matplotlib axis, optional
+        The left hand side polar plot
+    ax2: matplotlib axis, optional
+        The right hand side density plot
+    color: str, optional (default: None)
+        A color string to use
+    wrap: bool, optional (default: True)
+        True: Wrap the angle between -180 and 180
+        False: Constrain the angle between 0 and 360
+
+    Returns
+    -------
+    f: matplotlib.figure
+        The figure with both axis
+    ax1: matplotlib axis, optional
+        The left hand side polar plot
+    ax2: matplotlib axis, optional
+        The right hand side density plot
+    """
+
+    if ax1 is None or ax2 is None:
+        gs = gridspec.GridSpec(2, 6)
+        ax1 = pp.subplot(gs[:1, :2], polar=True)
+        ax2 = pp.subplot(gs[:1, 2:])
+
+    if wrap:
+        vf = np.vectorize(wrapAngle)
+    else:
+        vf = np.vectorize(constrainAngle)
+    x = vf(data)
+
+    sns.distplot(x, bins=N, ax=ax2, color=color, kde=True)
+    radii, theta = np.histogram(x, bins=N, normed=True)
+    ax1.set_yticklabels([])
+
+    if wrap:
+        ax1ticks = [0, 45, 90, 135, 180, -135, -90, -45]
+        ax2ticks = list(range(-180, 180 + 45, 45))
+        ax1.set_xticklabels(['{}°'.format(x) for x in ax1ticks])
+        ax2.set_xlim(-180, 180)
+        ax2.set_xticks(ax2ticks)
+        ax2.set_xticklabels(['{}°'.format(x) for x in ax2ticks])
+
+    else:
+        ax2ticks = list(range(0, 360 + 45, 45))
+        ax2.set_xlim(0, 360)
+        ax2.set_xticks(ax2ticks)
+        ax2.set_xticklabels(['{}°'.format(x) for x in ax2ticks])
+
+    ax2.set_yticks([])
+    ax2.set(xlabel='Angle', ylabel='Density')
+
+    sns.despine(ax=ax2)
+    width = (2 * np.pi) / N
+
+    ax1.bar(np.deg2rad(theta[1:]), radii, width=width, color=color, alpha=.5)
+
+    if title is not None:
+        pp.suptitle(title)
+
+    pp.tight_layout()
+
+    f = pp.gcf()
+    return f, (ax1, ax2)
+

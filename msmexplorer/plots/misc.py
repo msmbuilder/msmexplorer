@@ -9,7 +9,7 @@ import matplotlib.patches as patches
 
 import seaborn.apionly as sns
 
-from ..utils import msme_colors, wrapAngle, constrainAngle
+from ..utils import msme_colors, wrap_angle, constrain_angle
 from .. import palettes
 
 __all__ = ['plot_chord', 'plot_stackdist', 'plot_trace', 'plot_trace2d', 'plot_angle']
@@ -420,9 +420,9 @@ def plot_angle(data, N=50, title=None, ax1=None, ax2=None, color=None, wrap=True
         ax2 = pp.subplot(gs[:1, 2:])
 
     if wrap:
-        vf = np.vectorize(wrapAngle)
+        vf = np.vectorize(wrap_angle)
     else:
-        vf = np.vectorize(constrainAngle)
+        vf = np.vectorize(constrain_angle)
     x = vf(data)
 
     sns.distplot(x, bins=N, ax=ax2, color=color, kde=True)

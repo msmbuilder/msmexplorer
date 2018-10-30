@@ -383,6 +383,7 @@ def plot_trace2d(data, obs=(0, 1), ts=1.0, cbar=True, ax=None, xlabel=None,
     return ax
 
 
+@msme_colors
 def plot_angle(data, N=50, title=None, ax1=None, ax2=None, color=None, wrap=True):
     """
     Plot the distrubution of an angle in polar coordinates and a standard histogram / KDE plot.
